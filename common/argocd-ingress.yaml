@@ -11,11 +11,11 @@ metadata:
     # then you need to force the nginx ingress to connect to the backend using HTTPS.
     #
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    external-dns.alpha.kubernetes.io/hostname: "argo3.haenu.xyz"
+    external-dns.alpha.kubernetes.io/hostname: "argo4.haenu.xyz"
 spec:
   ingressClassName: "nginx"
   rules:
-  - host: argo3.haenu.xyz
+  - host: argo4.haenu.xyz
     http:
       paths:
       - path: /
@@ -27,28 +27,5 @@ spec:
               name: https
   tls:
   - hosts:
-    - argo3.haenu.xyz
+    - argo4.haenu.xyz
     secretName: argocd-secret # do not change, this is provided by Argo CD
-
-
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: argocd-argo-cd-server-ingress
-#   namespace: argocd
-#   annotations:
-#     kubernetes.io/ingress.class: nginx
-#     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-#     external-dns.alpha.kubernetes.io/hostname: argo2.haenu.xyz
-# spec:
-#   rules:
-#   - host: argo2.haenu.xyz
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: "/"
-#         backend:
-#           service:
-#             name: argocd-argo-cd-server
-#             port:
-#               number: 80
