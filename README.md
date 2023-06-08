@@ -16,3 +16,4 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to harbor -> 
 |-----|-----|-----|-----|
 |CI/CD|ArgoCD|[https://argo.haenu.xyz](https://argo.haenu.xyz)|CF Zero Trust 적용|
 |모니터링|Grafana|[https://grafana.haenu.xyz](https://grafana.haenu.xyz)|CF Zero Trust 적용|
+|모니터링|Loki||파드 로그 수집|
