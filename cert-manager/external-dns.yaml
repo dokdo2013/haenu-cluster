@@ -53,8 +53,9 @@ spec:
       - name: external-dns
         image: registry.k8s.io/external-dns/external-dns:v0.13.5
         args:
-        - --source=service
+        - --source=ingress
         - --provider=cloudflare
+        - --zone-id-filter=d02846d4056c80e41c9f2fe7dec56847 # (optional) limit to a specific zone.
         - --cloudflare-proxied
         - --cloudflare-dns-records-per-page=5000
         env:
