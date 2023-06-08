@@ -24,6 +24,5 @@ spec:
 
   tls:
   - hosts:
-    - argo.haenu.xyz
+    - grafana.haenu.xyz
     secretName: letsencrypt-prod
-    
