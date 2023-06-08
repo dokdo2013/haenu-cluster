@@ -5,10 +5,10 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: nginx
-    external-dns.alpha.kubernetes.io/hostname: argo.haenu.xyz
+    external-dns.alpha.kubernetes.io/hostname: argo2.haenu.xyz
 spec:
   rules:
-  - host: argo.haenu.xyz
+  - host: argo2.haenu.xyz
     http:
       paths:
       - pathType: Prefix
