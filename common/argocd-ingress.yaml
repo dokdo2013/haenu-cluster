@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-argo-cd-server-ingress
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -21,5 +22,6 @@ spec:
         backend:
           service:
             name: argocd-argo-cd-server
+            namespace: argocd
             port:
               number: 80
