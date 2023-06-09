@@ -5,5 +5,6 @@
 |앱 이름|네임스페이스|경로|분류|구성|링크|비고|
 |-----|-----|-----|-----|-----|-----|-----|
 |music-c6h12o6-kr|haenu|`/apps/music.c6h12o6.kr`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/music.c6h12o6.kr) / [Link](https://music.c6h12o6.kr)|기존 Vercel 배포|
-|leaven-multi|leaven|`/apps/leaven-multi`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/leaven-multi) / [Link](https://multi.leaven.team)|기존 Vercel 배포|
 |afdiscord-web|haenu|`/apps/afdiscord-web`|FrontEnd|Next.js|[Github](https://github.com/dokdo2013/afreecatv-discord-web) / [Link](https://afdiscord.haenu.com)|기존 Vercel 배포|
+|leaven-multi|leaven|`/apps/leaven-multi`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/leaven-multi) / [Link](https://multi.leaven.team)|기존 Vercel 배포|
+|leaven-onair|leaven|`/apps/leaven-onair`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/leaven-onair) / [Link](https://onair.leaven.team)|기존 Vercel 배포|
