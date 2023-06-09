@@ -38,6 +38,7 @@ metadata:
   name: external-dns
   namespace: cert-manager
 spec:
+  replicas: 0
   strategy:
     type: Recreate
   selector:
