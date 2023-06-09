@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: music.c6h12o6.kr
-        image: <dockerhub_username>/<repository_name>:<tag>
+        image: hyeonwoo5342/music.c6h12o6.kr:<tag>
         ports:
         - containerPort: 80
