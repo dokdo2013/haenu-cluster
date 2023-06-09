@@ -8,13 +8,13 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: music.c6h12o6.kr
+  - host: test-music.c6h12o6.kr
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: music.c6h12o6.kr
+            name: test-music.c6h12o6.kr
             port:
               number: 80
