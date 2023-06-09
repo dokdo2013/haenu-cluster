@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: music.c6h12o6.kr
-        image: hyeonwoo5342/music.c6h12o6.kr:<tag>
+        image: hyeonwoo5342/music.c6h12o6.kr:68ad789db6f99c3288a682587295971c34f35bf4
         ports:
         - containerPort: 80
