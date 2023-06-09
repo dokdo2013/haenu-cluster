@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-onair
+  namespace: leaven
+  labels:
+    app: leaven-onair
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leaven-onair
+  template:
+    metadata:
+      labels:
+        app: leaven-onair
+    spec:
+      containers:
+      - name: leaven-onair
+        image: hyeonwoo5342/leaven-onair:2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
