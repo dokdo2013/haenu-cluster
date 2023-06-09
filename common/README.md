@@ -22,3 +22,4 @@ Lets' Encrypt 인증서 발급을 위한 Issuer
 ## Namespaces
 공통 Namespace yaml
 - haenu : 공통
+- leaven : 레븐 관련

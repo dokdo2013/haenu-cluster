@@ -14,7 +14,7 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub
 
 |분류|이름|경로|비고|
 |-----|-----|-----|-----|
-|CI/CD|ArgoCD|[https://argo.haenu.xyz](https://argo.haenu.xyz)|CF Zero Trust 적용|
+|CI/CD|ArgoCD|[https://argo.haenu.xyz](https://argo.haenu.xyz)|IP 제한 적용|
 |모니터링|Grafana|[https://grafana.haenu.xyz](https://grafana.haenu.xyz)|CF Zero Trust 적용|
 |모니터링|Loki||파드 로그 수집|
 |모니터링|Uptime Kuma|[https://kuma.haenu.xyz](https://kuma.haenu.xyz)|Health Check|
