@@ -15,6 +15,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: test-music.c6h12o6.kr
+            name: music-c6h12o6-kr
             port:
               number: 80
