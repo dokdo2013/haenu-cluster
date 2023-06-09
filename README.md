@@ -30,5 +30,6 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub
 ## 배포 앱 목록
 |앱 이름|네임스페이스|경로|분류|구성|링크|특징|비고|
 |-----|-----|-----|-----|-----|-----|-----|-----|
-|music.c6h12o6.kr|leaven|`/apps/music.c6h12o6.kr`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/music.c6h12o6.kr) / [Link](https://music.c6h12o6.kr)||기존 Vercel 배포|
-|c6h12o6-api|leaven|`/apps/c6h12o6-api`|BackEnd|FastAPI|[Github private](https://github.com/dokdo2013/c6h12o6-api) / [Swagger](https://api.c6h12o6.kr/docs)||기존 EC2 배포|
+|music-c6h12o6-kr|haenu|`/apps/music.c6h12o6.kr`|FrontEnd|CRA+Nginx|[Github](https://github.com/dokdo2013/music.c6h12o6.kr) / [Link](https://music.c6h12o6.kr)||기존 Vercel 배포|
+|c6h12o6-api|haenu|`/apps/c6h12o6-api`|BackEnd|FastAPI|[Github private](https://github.com/dokdo2013/c6h12o6-api) / [Swagger](https://api.c6h12o6.kr/docs)||기존 EC2 배포|
+

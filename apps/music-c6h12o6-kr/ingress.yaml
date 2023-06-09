@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: test-music.c6h12o6.kr
+  - host: music.c6h12o6.kr
     http:
       paths:
       - pathType: Prefix
