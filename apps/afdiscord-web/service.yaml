@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: afdiscord-web
+  namespace: haenu
+  labels:
+    app: afdiscord-web
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: afdiscord-web

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: afdiscord-web
+  namespace: haenu
+  labels:
+    app: afdiscord-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: afdiscord-web
+  template:
+    metadata:
+      labels:
+        app: afdiscord-web
+    spec:
+      containers:
+      - name: afdiscord-web
+        image: hyeonwoo5342/afdiscord-web:5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
