@@ -23,5 +23,6 @@ spec:
         - containerPort: 80
       imagePullSecrets:
       - name: dockerhub-secret
+        namespace: default
         
 
