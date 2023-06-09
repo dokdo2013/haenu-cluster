@@ -18,7 +18,8 @@ spec:
       containers:
       - name: music-c6h12o6-kr
         image: hyeonwoo5342/music.c6h12o6.kr:5
-        imagePullSecrets:
-        - name: dockerhub-secret
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+
