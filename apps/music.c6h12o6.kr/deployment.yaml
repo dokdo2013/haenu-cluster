@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: music.c6h12o6.kr
+  namespace: haenu
+  labels:
+    app: music.c6h12o6.kr
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: music.c6h12o6.kr
+  template:
+    metadata:
+      labels:
+        app: music.c6h12o6.kr
+    spec:
+      containers:
+      - name: music.c6h12o6.kr
+        image: <dockerhub_username>/<repository_name>:<tag>
+        ports:
+        - containerPort: 80
