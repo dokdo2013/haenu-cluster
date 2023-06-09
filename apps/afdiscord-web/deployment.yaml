@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: afdiscord-web
-        image: hyeonwoo5342/afdiscord-web:5
+        image: hyeonwoo5342/afdiscord-web:1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
