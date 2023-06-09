@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-multi
+  namespace: leaven
+  labels:
+    app: leaven-multi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leaven-multi
+  template:
+    metadata:
+      labels:
+        app: leaven-multi
+    spec:
+      containers:
+      - name: leaven-multi
+        image: hyeonwoo5342/leaven-multi:tag
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
