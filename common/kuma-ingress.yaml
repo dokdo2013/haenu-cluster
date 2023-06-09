@@ -7,11 +7,11 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    external-dns.alpha.kubernetes.io/hostname: "kuma.haenu.xyz"
+    external-dns.alpha.kubernetes.io/hostname: "kuma2.haenu.xyz"
 spec:
   ingressClassName: "nginx"
   rules:
-  - host: kuma.haenu.xyz
+  - host: kuma2.haenu.xyz
     http:
       paths:
       - path: /
@@ -24,5 +24,5 @@ spec:
   
   tls:
   - hosts:
-    - kuma.haenu.xyz
+    - kuma2.haenu.xyz
     secretName: letsencrypt-prod
