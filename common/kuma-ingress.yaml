@@ -19,6 +19,7 @@ spec:
         backend:
           service:
             name: uptime-kuma
+            namespace: monitoring
             port: 
               number: 3001
   tls:
