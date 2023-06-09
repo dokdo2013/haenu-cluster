@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: leaven-onair
-        image: hyeonwoo5342/leaven-onair:2
+        image: hyeonwoo5342/leaven-onair:1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
