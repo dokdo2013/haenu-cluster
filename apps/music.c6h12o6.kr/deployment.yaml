@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: music.c6h12o6.kr
+  name: music-c6h12o6-kr
   namespace: haenu
   labels:
-    app: music.c6h12o6.kr
+    app: music-c6h12o6-kr
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: music.c6h12o6.kr
+      app: music-c6h12o6-kr
   template:
     metadata:
       labels:
-        app: music.c6h12o6.kr
+        app: music-c6h12o6-kr
     spec:
       containers:
-      - name: music.c6h12o6.kr
+      - name: music-c6h12o6-kr
         image: hyeonwoo5342/music.c6h12o6.kr:5
         ports:
         - containerPort: 80
