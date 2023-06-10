@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-minigame
+  namespace: leaven
+  labels:
+    app: leaven-minigame
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leaven-minigame
+  template:
+    metadata:
+      labels:
+        app: leaven-minigame
+    spec:
+      containers:
+      - name: leaven-minigame
+        image: hyeonwoo5342/leaven-minigame:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
