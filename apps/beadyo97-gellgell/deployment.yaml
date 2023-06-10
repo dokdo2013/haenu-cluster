@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: beadyo97-gellgell
-        image: hyeonwoo5342/beadyo97-gellgell:7
+        image: hyeonwoo5342/beadyo97-gellgell:1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
