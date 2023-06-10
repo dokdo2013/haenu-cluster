@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: gellgell.leaven.team
+  - host: gell.leaven.team
     http:
       paths:
       - pathType: Prefix
