@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: moneymoney-front
-        image: hyeonwoo5342/moneymoney-front:1
+        image: hyeonwoo5342/moneymoney-front:2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
