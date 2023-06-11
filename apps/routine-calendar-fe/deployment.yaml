@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: routine-calendar-fe
-        image: hyeonwoo5342/routine-calendar-fe:1
+        image: hyeonwoo5342/routine-calendar-fe:3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
