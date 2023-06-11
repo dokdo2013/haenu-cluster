@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inpyeongo
+  namespace: haenu
+  labels:
+    app: inpyeongo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inpyeongo
+  template:
+    metadata:
+      labels:
+        app: inpyeongo
+    spec:
+      containers:
+      - name: inpyeongo
+        image: hyeonwoo5342/inpyeongo:4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
