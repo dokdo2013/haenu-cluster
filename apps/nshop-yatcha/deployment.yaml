@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nshop-yatcha
-        image: hyeonwoo5342/nshop-yatcha:5
+        image: hyeonwoo5342/nshop-yatcha:1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
