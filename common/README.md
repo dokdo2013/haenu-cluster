@@ -12,6 +12,12 @@ grafana를 도메인으로 접속하기 위해 이용
 - SSL 적용여부 : Y (let's encrypt)
 - Cloudflare : DNS Only
 
+## kuma-ingress
+uptime kuma를 도메인으로 접속하기 위해 이용
+- 접속 도메인 : kuma.haenu.xyz
+- SSL 적용여부 : N
+- Cloudflare : Proxied (SSL 적용)
+
 ## cluster issuer
 Lets' Encrypt 인증서 발급을 위한 Issuer
 
