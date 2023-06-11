@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: junharry
+  namespace: leaven
+  labels:
+    app: junharry
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: junharry
+  template:
+    metadata:
+      labels:
+        app: junharry
+    spec:
+      containers:
+      - name: junharry
+        image: hyeonwoo5342/junharry:7
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
