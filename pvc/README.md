@@ -13,5 +13,15 @@ Vultr Kubernetes Engine의 특성상 Block Storage의 Minimum Size가 정해져�
 - class : vultr-block-storage-hdd
 - size : 40Gi
 
+## Gitea PVC
+- basic pvc
+    - pvc : data-gitea-0
+    - class : vultr-block-storage-hdd
+    - size : 40Gi
+- database pvc
+    - pvc : data-gitea-postgresql-0
+    - class : vultr-block-storage-hdd
+    - size : 40Gi
+
 ## Vault PVCs
 일단 Vault를 사용하지 않는 쪽으로 갈 계획이라, 만들어뒀던 PVC는 주석처리하였음
