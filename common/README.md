@@ -17,6 +17,8 @@ gitea를 도메인으로 접속하기 위해 이용
 - 접속 도메인 : git.haenu.xyz
 - SSL 적용여부 : Y (let's encrypt)
 - Cloudflare : Proxied (SSL Strict)
+- 기타 정보
+  - Nginx Ingress Controller POST Size : 1024m
 
 ## kuma-ingress
 uptime kuma를 도메인으로 접속하기 위해 이용
