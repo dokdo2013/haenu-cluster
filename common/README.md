@@ -4,19 +4,25 @@
 argocd 서버를 도메인으로 접속하기 위해 이용
 - 접속 도메인 : argo.haenu.xyz
 - SSL 적용여부 : Y (let's encrypt)
-- Cloudflare : DNS Only
+- Cloudflare : Proxied (SSL Strict)
 
 ## grafana-ingress
 grafana를 도메인으로 접속하기 위해 이용
 - 접속 도메인 : grafana.haenu.xyz
 - SSL 적용여부 : Y (let's encrypt)
-- Cloudflare : DNS Only
+- Cloudflare : Proxied (SSL Strict)
+
+## gitea-ingress
+gitea를 도메인으로 접속하기 위해 이용
+- 접속 도메인 : git.haenu.xyz
+- SSL 적용여부 : Y (let's encrypt)
+- Cloudflare : Proxied (SSL Strict)
 
 ## kuma-ingress
 uptime kuma를 도메인으로 접속하기 위해 이용
 - 접속 도메인 : kuma.haenu.xyz
 - SSL 적용여부 : N
-- Cloudflare : Proxied (SSL 적용)
+- Cloudflare : Proxied (SSL Flexible)
 
 ## cluster issuer
 Lets' Encrypt 인증서 발급을 위한 Issuer

@@ -18,6 +18,7 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub
 |모니터링|Grafana|[https://grafana.haenu.xyz](https://grafana.haenu.xyz)|CF Zero Trust 적용|
 |모니터링|Loki||파드 로그 수집|
 |모니터링|Uptime Kuma|[https://kuma.haenu.xyz](https://kuma.haenu.xyz)|Health Check|
+|깃 서버|Gitea|[https://git.haenu.xyz](https://git.haenu.xyz)|CF Zero Trust 적용|
 
 ## 레포 구성
 |경로|용도|설명|
