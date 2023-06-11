@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitch-docs-i18n
+  namespace: haenu
+  labels:
+    app: twitch-docs-i18n
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: twitch-docs-i18n
+  template:
+    metadata:
+      labels:
+        app: twitch-docs-i18n
+    spec:
+      containers:
+      - name: twitch-docs-i18n
+        image: hyeonwoo5342/twitch-docs-i18n:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
