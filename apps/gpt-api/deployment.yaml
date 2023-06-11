@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt-api
+  namespace: api
+  labels:
+    app: gpt-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gpt-api
+  template:
+    metadata:
+      labels:
+        app: gpt-api
+    spec:
+      containers:
+      - name: gpt-api
+        image: hyeonwoo5342/gpt-api:0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
