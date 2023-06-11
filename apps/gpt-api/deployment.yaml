@@ -20,7 +20,7 @@ spec:
         image: hyeonwoo5342/gpt-api:4
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 9900
       imagePullSecrets:
       - name: dockerhub-secret
         
