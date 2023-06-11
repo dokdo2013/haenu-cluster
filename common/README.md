@@ -35,3 +35,6 @@ Lets' Encrypt 인증서 발급을 위한 Issuer
 공통 Namespace yaml
 - haenu : 공통
 - leaven : 레븐 관련
+- api : API 모음
+
+**주의사항 : 네임스페이스 추가시 네임스페이스별 dockerhub-secret을 수동으로 설정해줘야 합니다**

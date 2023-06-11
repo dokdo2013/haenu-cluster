@@ -68,4 +68,30 @@ jobs:
 - `GITOPS_TOKEN` : Github 계정 토큰
 
 ## 빌드 단계에서 환경변수 주입
-작성 필요
+도커 빌드 직전에 환경변수를 주입하면 됩니다. 환경변수가 포함된 이미지는 **반드시 Private으로 설정**해야 합니다.
+
+### 작업 순서
+1. 깃허브에 환경변수를 추가해줍니다. 레포 설정 `Environment` 영역으로 가서, Secret을 추가해줍니다.
+2. 그 다음 Github Actions Build Job 내에 어떤 환경인지 설정해주세요.
+3. 도커 빌드 직전에 환경변수를 .env 파일로 주입하면 됩니다.
+
+### 주입 코드
+먼저 job 상단에 어떤 환경인지 선언해줘야 합니다.
+```yaml
+jobs:
+  build:
+    environment: main # 일반적으로 main으로 선언하는데, 환경분리되면 여기에 적절한 값을 넣어주세요
+    runs-on: ubuntu-latest
+```
+그 다음에 위치를 찾아서 .env 파일을 만들어주세요. 환경변수에 특수기호가 들어가면 따옴표로 감싸주는 걸 잊지 마세요.
+```yaml
+    # 바로 위는 Login to Docker Hub 단계
+
+    - name: Create .env file
+      run: |
+        echo OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} >> .env
+        echo KAKAO_API_KEY=${{ secrets.KAKAO_API_KEY }} >> .env
+        # Add other variables as needed
+
+    # 바로 아래는 Build and push Docker image 단계
+```
