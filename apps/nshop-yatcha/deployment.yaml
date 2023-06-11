@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nshop-yatcha
+  namespace: haenu
+  labels:
+    app: nshop-yatcha
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nshop-yatcha
+  template:
+    metadata:
+      labels:
+        app: nshop-yatcha
+    spec:
+      containers:
+      - name: nshop-yatcha
+        image: hyeonwoo5342/nshop-yatcha:5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+

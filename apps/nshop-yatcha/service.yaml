@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nshop-yatcha
+  namespace: haenu
+  labels:
+    app: nshop-yatcha
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: nshop-yatcha
