@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicbook-be
+  namespace: api
+  labels:
+    app: musicbook-be
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: musicbook-be
+  template:
+    metadata:
+      labels:
+        app: musicbook-be
+    spec:
+      containers:
+      - name: musicbook-be
+        image: hyeonwoo5342/musicbook-be:6
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
