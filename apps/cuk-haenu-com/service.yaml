@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cuk-haenu-com
+  namespace: legacy
+  labels:
+    app: cuk-haenu-com
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: cuk-haenu-com

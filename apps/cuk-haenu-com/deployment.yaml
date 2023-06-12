@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cuk-haenu-com
+  namespace: legacy
+  labels:
+    app: cuk-haenu-com
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cuk-haenu-com
+  template:
+    metadata:
+      labels:
+        app: cuk-haenu-com
+    spec:
+      containers:
+      - name: cuk-haenu-com
+        image: hyeonwoo5342/cuk-haenu-com:4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
