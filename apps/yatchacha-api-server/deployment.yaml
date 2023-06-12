@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: yatchacha-api-server
-        image: hyeonwoo5342/yatchacha-api-server:5
+        image: hyeonwoo5342/yatchacha-api-server:2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
