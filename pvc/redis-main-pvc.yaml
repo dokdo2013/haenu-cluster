@@ -36,3 +36,16 @@ spec:
   resources:
     requests:
       storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-data-redis-main-replicas-2
+  namespace: default
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
