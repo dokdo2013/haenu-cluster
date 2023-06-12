@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: c6h12o6-api
+  namespace: api
+  labels:
+    app: c6h12o6-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: c6h12o6-api
