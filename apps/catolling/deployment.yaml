@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: catolling
-        image: hyeonwoo5342/catolling:0
+        image: hyeonwoo5342/catolling:2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
