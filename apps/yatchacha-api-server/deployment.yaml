@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yatchacha-api-server
+  namespace: api
+  labels:
+    app: yatchacha-api-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yatchacha-api-server
+  template:
+    metadata:
+      labels:
+        app: yatchacha-api-server
+    spec:
+      containers:
+      - name: yatchacha-api-server
+        image: hyeonwoo5342/yatchacha-api-server:5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+

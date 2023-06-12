@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yatchacha-api-server
+  namespace: api
+  labels:
+    app: yatchacha-api-server
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: yatchacha-api-server
