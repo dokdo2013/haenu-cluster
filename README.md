@@ -10,15 +10,17 @@ Haenu Cluster GitOps Repository
 Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub -> Change `haenu-cluster` repo's image tag -> ArgoCD Trigger -> Sync k8s cluster
 
 ## 주요 관리 앱
-도메인으로 연결되어 있으면 경로를 작성합니다. 외부로 열려있는 앱들은 보안을 위해 CF Zero Trust를 일괄 적용하였으며, 적용이 어려운 경우에는 접속 IP 제한을 겁니다.
+도메인으로 연결되어 있으면 경로를 작성합니다. 외부로 열려있는 앱들은 보안을 위해 접속 IP를 제한합니다.
 
 |분류|이름|경로|비고|
 |-----|-----|-----|-----|
 |CI/CD|ArgoCD|[https://argo.haenu.xyz](https://argo.haenu.xyz)|IP 제한 적용|
 |모니터링|Grafana|[https://grafana.haenu.xyz](https://grafana.haenu.xyz)|IP 제한 적용|
-|모니터링|Loki||파드 로그 수집|
+|모니터링|Loki & Promtail||파드 로그 수집|
+|모니터링|Prometheus||메트릭 수집|
 |모니터링|Uptime Kuma|[https://kuma.haenu.xyz](https://kuma.haenu.xyz)|Health Check|
 |깃 서버|Gitea|[https://git.haenu.xyz](https://git.haenu.xyz)|IP 제한 적용|
+|Ingress|Nginx-Ingress-Controller|||
 
 ## 레포 구성
 |경로|용도|설명|

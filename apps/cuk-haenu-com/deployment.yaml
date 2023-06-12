@@ -21,6 +21,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        - containerPort: 443
+        - containerPort: 9000
       imagePullSecrets:
       - name: dockerhub-secret
         
