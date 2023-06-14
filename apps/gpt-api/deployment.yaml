@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gpt-api
-        image: hyeonwoo5342/gpt-api:10
+        image: hyeonwoo5342/gpt-api:11
         imagePullPolicy: Always
         ports:
         - containerPort: 9900
