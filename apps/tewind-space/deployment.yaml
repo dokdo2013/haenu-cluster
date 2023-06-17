@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: tewind-space
-        image: hyeonwoo5342/tewind-space:3
+        image: hyeonwoo5342/tewind-space:2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
