@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appflowy
+  namespace: default
+  labels:
+    app: appflowy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appflowy
+  template:
+    metadata:
+      labels:
+        app: appflowy
+    spec:
+      containers:
+      - name: appflowy
+        image: appflowyio/appflowy_client:0.2.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      # imagePullSecrets:
+      # - name: dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appflowy
+  namespace: haenu
+  labels:
+    app: appflowy
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: appflowy
+---
+
+
+
+        
+
