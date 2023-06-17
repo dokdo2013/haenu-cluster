@@ -63,6 +63,18 @@ spec:
   selector:
     app: appflowy
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: appflowy-data
+  namespace: default
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
 
 
 
