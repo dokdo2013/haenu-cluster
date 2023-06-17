@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicbook-fe
+  namespace: haenu
+  labels:
+    app: musicbook-fe
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: musicbook-fe
+  template:
+    metadata:
+      labels:
+        app: musicbook-fe
+    spec:
+      containers:
+      - name: musicbook-fe
+        image: hyeonwoo5342/musicbook-fe:0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
