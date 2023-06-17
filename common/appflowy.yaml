@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appflowy
+  name: appflowy-deployment
   namespace: default
   labels:
     app: appflowy
@@ -17,12 +17,37 @@ spec:
     spec:
       containers:
       - name: appflowy
-        image: appflowyio/appflowy_client:0.2.1
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-      # imagePullSecrets:
-      # - name: dockerhub-secret
+        image: appflowyio/appflowy_client:main
+        env:
+        - name: DISPLAY
+          value: ${DISPLAY}
+        volumeMounts:
+        - name: xauthority
+          mountPath: /root/.Xauthority
+        - name: x11-unix
+          mountPath: /tmp/.X11-unix
+        - name: dev-dri
+          mountPath: /dev/dri
+        - name: dbus
+          mountPath: /var/run/dbus/system_bus_socket
+        - name: appflowy-data
+          mountPath: /home/appflowy
+      volumes:
+      - name: xauthority
+        hostPath:
+          path: $HOME/.Xauthority
+      - name: x11-unix
+        hostPath:
+          path: /tmp/.X11-unix
+      - name: dev-dri
+        hostPath:
+          path: /dev/dri
+      - name: dbus
+        hostPath:
+          path: /var/run/dbus/system_bus_socket
+      - name: appflowy-data
+        persistentVolumeClaim:
+          claimName: appflowy-data
 ---
 apiVersion: v1
 kind: Service
