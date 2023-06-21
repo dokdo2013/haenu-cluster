@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-tewind-space
+  namespace: haenu
+  labels:
+    app: dev-tewind-space
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    app: dev-tewind-space

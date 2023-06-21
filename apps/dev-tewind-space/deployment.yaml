@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-tewind-space
+  namespace: haenu
+  labels:
+    app: dev-tewind-space
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dev-tewind-space
+  template:
+    metadata:
+      labels:
+        app: dev-tewind-space
+    spec:
+      containers:
+      - name: dev-tewind-space
+        image: hyeonwoo5342/dev-tewind-space:3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret
+        
+
