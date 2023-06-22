@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: junharry
-        image: hyeonwoo5342/junharry:12
+        image: hyeonwoo5342/junharry:13
         imagePullPolicy: Always
         ports:
         - containerPort: 80
