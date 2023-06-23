@@ -1,12 +1,12 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: data-supa-dev-tewind-space-postgresql-0
-  namespace: supa-dev-tewind-space
-spec:
-  storageClassName: vultr-block-storage-hdd
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 40Gi
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: data-supa-dev-tewind-space-postgresql-0
+#   namespace: supa-dev-tewind-space
+# spec:
+#   storageClassName: vultr-block-storage-hdd
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 40Gi
