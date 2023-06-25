@@ -6,7 +6,6 @@ metadata:
   labels:
     app: beadyo97-gellgell
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: beadyo97-gellgell
