@@ -4,7 +4,8 @@ metadata:
   name: gongik-ars-cronjob1
   namespace: haenu
 spec:
-  schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
+  # schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
+  schedule: "58 22 * * *"  # 한국 시간 저녁 7시
   timeZone: "Asia/Seoul"
   jobTemplate:
     spec:
