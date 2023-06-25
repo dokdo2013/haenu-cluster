@@ -4,7 +4,8 @@ metadata:
   name: gongik-ars-cronjob
   namespace: haenu
 spec:
-  schedule: "0 10 * * 1-5"  # 평일 오전 10시(UTC) = 한국 시간 저녁 7시
+  schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
+  timeZone: "Asia/Seoul"
   jobTemplate:
     spec:
       template:
@@ -16,7 +17,7 @@ spec:
             - containerPort: 3008
             envFrom:
             - secretRef:
-              name: gongik-ars-secret
+                name: gongik-ars-secret
           - name: curl-container
             image: busybox:1.36.1
             env:
