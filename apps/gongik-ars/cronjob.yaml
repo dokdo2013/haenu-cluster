@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: gongik-ars-app
-            image: hyeonwoo5342/gongik-ars:1
+            image: hyeonwoo5342/gongik-ars:2
             ports:
             - containerPort: 3008
             envFrom:
