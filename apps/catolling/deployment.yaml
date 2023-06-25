@@ -6,7 +6,6 @@ metadata:
   labels:
     app: catolling
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: catolling
@@ -21,7 +20,38 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            memory: '150Mi'
+            cpu: '30m'
+          requests:
+            memory: '150Mi'
+            cpu: '30m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
-        
-
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: catolling
+  namespace: legacy
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: catolling
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
