@@ -21,6 +21,7 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub
 |모니터링|Uptime Kuma|[https://kuma.haenu.xyz](https://kuma.haenu.xyz)|Health Check|
 |깃 서버|Gitea|[https://git.haenu.xyz](https://git.haenu.xyz)|IP 제한 적용|
 |Ingress|Nginx-Ingress-Controller|||
+|Secret|Sealed Secret||시크릿 관리|
 
 ## 레포 구성
 |경로|용도|설명|

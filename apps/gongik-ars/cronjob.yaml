@@ -14,14 +14,23 @@ spec:
             image: hyeonwoo5342/gongik-ars:1
             ports:
             - containerPort: 3008
+            envFrom:
+              - secretRef:
+                name: gongik-ars-secret
           - name: curl-container
-            image: busybox:1.28
+            image: busybox:1.36.1
+            env:
+            - name: PHONE_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: gongik-ars-phone1-secret
+                  key: PHONE_NUMBER
             args:
             - /bin/sh
             - -c
             - >
               until nslookup gongik-ars-app; do echo waiting for gongik-ars-app; sleep 2; done;
-              curl -X POST "http://gongik-ars-app:3008/call?to=1012345678"
+              curl -X POST "http://gongik-ars-app:3008/call?to=$PHONE_NUMBER"
           restartPolicy: OnFailure
           imagePullSecrets:
           - name: dockerhub-secret
