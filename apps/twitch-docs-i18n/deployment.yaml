@@ -6,7 +6,6 @@ metadata:
   labels:
     app: twitch-docs-i18n
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: twitch-docs-i18n
@@ -20,8 +19,39 @@ spec:
         image: hyeonwoo5342/twitch-docs-i18n:4
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '200Mi'
+            cpu: '150m'
+          requests:
+            memory: '200Mi'
+            cpu: '150m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
-        
-
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: twitch-docs-i18n
+  namespace: haenu
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: twitch-docs-i18n
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
