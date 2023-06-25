@@ -25,8 +25,8 @@ spec:
             memory: '200Mi'
             cpu: '100m'
           requests:
-            memory: '150Mi'
-            cpu: '30m'
+            memory: '200Mi'
+            cpu: '100m'
         livenessProbe:
           httpGet:
             path: /
@@ -54,16 +54,4 @@ spec:
     name: afdiscord-web
   minReplicas: 2
   maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 70
+  targetCPUUtilizationPercentage: 70

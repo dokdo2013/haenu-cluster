@@ -24,6 +24,9 @@ spec:
           limits:
             memory: '20Mi'
             cpu: '1m'
+          requests:
+            memory: '20Mi'
+            cpu: '1m'
         livenessProbe:
           httpGet:
             path: /
@@ -51,17 +54,4 @@ spec:
     name: beadyo97-gellgell
   minReplicas: 2
   maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 70
-
+  targetCPUUtilizationPercentage: 70
