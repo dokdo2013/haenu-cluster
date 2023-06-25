@@ -27,6 +27,9 @@ spec:
             port: 3008
           initialDelaySeconds: 5
           periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: gongik-ars-secret
       imagePullSecrets:
       - name: dockerhub-secret
         
