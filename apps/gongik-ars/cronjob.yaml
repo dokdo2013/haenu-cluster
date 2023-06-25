@@ -23,7 +23,7 @@ spec:
             - /bin/sh
             - -c
             - >
-              curl -X POST "http://gongik-ars/call?to=$PHONE_NUMBER"
+              curl -X POST "http://gongik-ars:3008/call?to=$PHONE_NUMBER"
           restartPolicy: OnFailure
 ---
 apiVersion: batch/v1
