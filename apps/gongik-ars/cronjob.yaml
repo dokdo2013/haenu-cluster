@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gongik-ars-cronjob
+  namespace: haenu
+spec:
+  schedule: "0 10 * * 1-5"  # 평일 오전 10시(UTC) = 한국 시간 저녁 7시
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: gongik-ars-app
+            image: hyeonwoo5342/gongik-ars:1
+            ports:
+            - containerPort: 3008
+          - name: curl-container
+            image: busybox:1.28
+            args:
+            - /bin/sh
+            - -c
+            - >
+              until nslookup gongik-ars-app; do echo waiting for gongik-ars-app; sleep 2; done;
+              curl -X POST "http://gongik-ars-app:3008/call?to=1012345678"
+          restartPolicy: OnFailure
+          imagePullSecrets:
+          - name: dockerhub-secret
