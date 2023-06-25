@@ -20,14 +20,11 @@ spec:
         image: hyeonwoo5342/afdiscord-web:1
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-            httpHeaders:
-            - name: Custom-Header
-              value: Awesome
           initialDelaySeconds: 5
           periodSeconds: 10
       imagePullSecrets:
