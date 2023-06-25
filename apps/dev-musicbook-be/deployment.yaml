@@ -24,7 +24,7 @@ spec:
         resources:
           limits:
             memory: '250Mi'
-            cpu: '200m'
+            cpu: '250m'
         livenessProbe:
           httpGet:
             path: /
