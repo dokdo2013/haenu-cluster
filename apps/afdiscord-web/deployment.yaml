@@ -46,6 +46,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: afdiscord-web
+  namespace: haenu
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
