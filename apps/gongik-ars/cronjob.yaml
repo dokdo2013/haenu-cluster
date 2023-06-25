@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
           - name: curl-container
-            image: busybox:1.36.1
+            image: appropriate/curl:latest
             env:
             - name: PHONE_NUMBER
               valueFrom:
