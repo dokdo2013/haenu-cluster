@@ -30,13 +30,13 @@ spec:
             cpu: '100m'
         livenessProbe:
           httpGet:
-            path: /health
+            path: /mbti/user
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /health
+            path: /mbti/user
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
