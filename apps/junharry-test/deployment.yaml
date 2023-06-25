@@ -6,7 +6,6 @@ metadata:
   labels:
     app: junharry-test
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: junharry-test
@@ -20,8 +19,39 @@ spec:
         image: hyeonwoo5342/junharry-test:16
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '200Mi'
+            cpu: '100m'
+          requests:
+            memory: '200Mi'
+            cpu: '100m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
-        
-
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: junharry-test
+  namespace: leaven
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: junharry-test
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
