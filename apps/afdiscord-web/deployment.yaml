@@ -21,6 +21,15 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            httpHeaders:
+            - name: Custom-Header
+              value: Awesome
+          initialDelaySeconds: 5
+          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
         
