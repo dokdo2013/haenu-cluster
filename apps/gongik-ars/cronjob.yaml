@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: gongik-ars-cronjob
+  name: gongik-ars-cronjob1
   namespace: haenu
 spec:
   schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
@@ -11,13 +11,6 @@ spec:
       template:
         spec:
           containers:
-          - name: gongik-ars-app
-            image: hyeonwoo5342/gongik-ars:2
-            ports:
-            - containerPort: 3008
-            envFrom:
-            - secretRef:
-                name: gongik-ars-secret
           - name: curl-container
             image: busybox:1.36.1
             env:
@@ -30,8 +23,33 @@ spec:
             - /bin/sh
             - -c
             - >
-              until nslookup gongik-ars-app; do echo waiting for gongik-ars-app; sleep 2; done;
-              curl -X POST "http://gongik-ars-app:3008/call?to=$PHONE_NUMBER"
+              curl -X POST "http://gongik-ars/call?to=$PHONE_NUMBER"
           restartPolicy: OnFailure
-          imagePullSecrets:
-          - name: dockerhub-secret
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gongik-ars-cronjob2
+  namespace: haenu
+spec:
+  schedule: "30 18 * * 1-5"  # 한국 시간 저녁 6시 30분
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: busybox:1.36.1
+            env:
+            - name: PHONE_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: gongik-ars-phone2-secret
+                  key: PHONE_NUMBER
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X POST "http://gongik-ars/call?to=$PHONE_NUMBER"
+          restartPolicy: OnFailure

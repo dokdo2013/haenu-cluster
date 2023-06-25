@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gongik-ars
+  namespace: haenu
+  labels:
+    app: gongik-ars
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3008
+  selector:
+    app: gongik-ars
