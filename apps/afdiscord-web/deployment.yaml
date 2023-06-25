@@ -42,7 +42,7 @@ spec:
       imagePullSecrets:
       - name: dockerhub-secret
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: afdiscord-web
