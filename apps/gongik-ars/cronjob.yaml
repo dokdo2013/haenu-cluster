@@ -4,8 +4,7 @@ metadata:
   name: gongik-ars-cronjob1
   namespace: haenu
 spec:
-  # schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
-  schedule: "58 22 * * *"  # 한국 시간 저녁 7시
+  schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
   timeZone: "Asia/Seoul"
   jobTemplate:
     spec:
@@ -41,7 +40,7 @@ spec:
         spec:
           containers:
           - name: curl-container
-            image: busybox:1.36.1
+            image: appropriate/curl:latest
             env:
             - name: PHONE_NUMBER
               valueFrom:
@@ -52,5 +51,5 @@ spec:
             - /bin/sh
             - -c
             - >
-              curl -X POST "http://gongik-ars/call?to=$PHONE_NUMBER"
+              curl -X POST "http://gongik-ars:3008/call?to=$PHONE_NUMBER"
           restartPolicy: OnFailure
