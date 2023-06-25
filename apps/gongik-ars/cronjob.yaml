@@ -15,8 +15,8 @@ spec:
             ports:
             - containerPort: 3008
             envFrom:
-              - secretRef:
-                name: gongik-ars-secret
+            - secretRef:
+              name: gongik-ars-secret
           - name: curl-container
             image: busybox:1.36.1
             env:
