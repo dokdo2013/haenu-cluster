@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: leaven-minigame
+  name: leaven-twapi
   namespace: leaven
   labels:
-    app: leaven-minigame
+    app: leaven-twapi
 spec:
   selector:
     matchLabels:
-      app: leaven-minigame
+      app: leaven-twapi
   template:
     metadata:
       labels:
-        app: leaven-minigame
+        app: leaven-twapi
     spec:
       containers:
-      - name: leaven-minigame
-        image: hyeonwoo5342/leaven-minigame:9
+      - name: leaven-twapi
+        image: hyeonwoo5342/leaven-twapi:9
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 4200
         resources:
           limits:
             memory: '200Mi'
@@ -30,28 +30,31 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 3000
+            port: 4200
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
-            port: 3000
+            port: 4200
           initialDelaySeconds: 5
           periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: leaven-twapi-secret
       imagePullSecrets:
       - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: leaven-minigame
+  name: leaven-twapi
   namespace: leaven
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: leaven-minigame
+    name: leaven-twapi
   minReplicas: 2
   maxReplicas: 10
   targetCPUUtilizationPercentage: 70
