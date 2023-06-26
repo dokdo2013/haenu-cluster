@@ -19,7 +19,7 @@ spec:
         image: hyeonwoo5342/ejnmeal-be:2
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 6600
         resources:
           limits:
             memory: '300Mi'
@@ -30,13 +30,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 3000
+            port: 6600
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
-            port: 3000
+            port: 6600
           initialDelaySeconds: 5
           periodSeconds: 10
         envFrom:
