@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ejnmeal-be
-        image: hyeonwoo5342/ejnmeal-be:4
+        image: hyeonwoo5342/ejnmeal-be:1
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
