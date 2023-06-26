@@ -26,5 +26,8 @@ spec:
           requests:
             memory: '250Mi'
             cpu: '70m'
+        envFrom:
+        - secretRef:
+            name: hami0825-secret
       imagePullSecrets:
       - name: dockerhub-secret
