@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinbot
+  namespace: haenu
+  labels:
+    app: coinbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinbot
+  template:
+    metadata:
+      labels:
+        app: coinbot
+    spec:
+      containers:
+      - name: coinbot
+        image: hyeonwoo5342/coinbot:0
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: '200Mi'
+            cpu: '100m'
+          requests:
+            memory: '200Mi'
+            cpu: '100m'
+      imagePullSecrets:
+      - name: dockerhub-secret
