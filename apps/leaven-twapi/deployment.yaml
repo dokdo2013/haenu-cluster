@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-twapi
-        image: hyeonwoo5342/leaven-twapi:9
+        image: hyeonwoo5342/leaven-twapi:1
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
