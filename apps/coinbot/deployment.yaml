@@ -21,10 +21,10 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            memory: '200Mi'
-            cpu: '100m'
+            memory: '250Mi'
+            cpu: '70m'
           requests:
-            memory: '200Mi'
-            cpu: '100m'
+            memory: '250Mi'
+            cpu: '70m'
       imagePullSecrets:
       - name: dockerhub-secret
