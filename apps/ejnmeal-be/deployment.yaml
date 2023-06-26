@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ejnmeal-be
+  namespace: api
+  labels:
+    app: ejnmeal-be
+spec:
+  selector:
+    matchLabels:
+      app: ejnmeal-be
+  template:
+    metadata:
+      labels:
+        app: ejnmeal-be
+    spec:
+      containers:
+      - name: ejnmeal-be
+        image: hyeonwoo5342/ejnmeal-be:4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '300Mi'
+            cpu: '200m'
+          requests:
+            memory: '300Mi'
+            cpu: '200m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: ejnmeal-be-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ejnmeal-be
+  namespace: api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ejnmeal-be
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
