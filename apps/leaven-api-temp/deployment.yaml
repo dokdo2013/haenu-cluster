@@ -39,6 +39,9 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
+        envFrom: 
+        - secretRef:
+            name: leaven-api-temp-secret
       imagePullSecrets:
       - name: dockerhub-secret
 ---
