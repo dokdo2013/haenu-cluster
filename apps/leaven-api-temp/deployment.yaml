@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-api-temp
-        image: hyeonwoo5342/leaven-api-temp:1
+        image: hyeonwoo5342/leaven-api-temp:2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
