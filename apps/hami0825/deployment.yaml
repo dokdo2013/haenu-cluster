@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hami0825
+  namespace: haenu
+  labels:
+    app: hami0825
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hami0825
+  template:
+    metadata:
+      labels:
+        app: hami0825
+    spec:
+      containers:
+      - name: hami0825
+        image: hyeonwoo5342/hami0825:3
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: '250Mi'
+            cpu: '70m'
+          requests:
+            memory: '250Mi'
+            cpu: '70m'
+      imagePullSecrets:
+      - name: dockerhub-secret
