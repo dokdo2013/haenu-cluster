@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: leaven-api-temp
+  namespace: api
+  labels:
+    app: leaven-api-temp
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: leaven-api-temp
