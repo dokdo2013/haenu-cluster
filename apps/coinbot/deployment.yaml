@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: coinbot
-        image: hyeonwoo5342/coinbot:0
+        image: hyeonwoo5342/coinbot:3
         imagePullPolicy: Always
         resources:
           limits:
