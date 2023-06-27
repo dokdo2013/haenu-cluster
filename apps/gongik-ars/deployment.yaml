@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gongik-ars
-        image: hyeonwoo5342/gongik-ars:3
+        image: hyeonwoo5342/gongik-ars:4
         imagePullPolicy: Always
         ports:
         - containerPort: 3008
