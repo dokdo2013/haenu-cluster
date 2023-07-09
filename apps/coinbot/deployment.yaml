@@ -19,12 +19,5 @@ spec:
       - name: coinbot
         image: hyeonwoo5342/coinbot:3
         imagePullPolicy: Always
-        resources:
-          limits:
-            memory: '250Mi'
-            cpu: '70m'
-          requests:
-            memory: '250Mi'
-            cpu: '70m'
       imagePullSecrets:
       - name: dockerhub-secret
