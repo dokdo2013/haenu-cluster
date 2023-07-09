@@ -22,22 +22,19 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-            memory: '300Mi'
-            cpu: '150m'
-          requests:
-            memory: '300Mi'
-            cpu: '150m'
+            memory: '150Mi'
+            cpu: '50m'
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 25
           periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
@@ -54,4 +51,10 @@ spec:
     name: tewind-space
   minReplicas: 3
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
