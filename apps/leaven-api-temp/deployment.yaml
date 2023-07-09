@@ -22,16 +22,13 @@ spec:
         - containerPort: 80
         resources:
           limits:
-            memory: '250Mi'
-            cpu: '100m'
-          requests:
-            memory: '250Mi'
-            cpu: '100m'
+            memory: '160Mi'
+            cpu: '50m'
         livenessProbe:
           httpGet:
             path: /health
             port: 80
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 10
         readinessProbe:
           httpGet:

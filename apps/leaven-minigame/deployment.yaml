@@ -22,16 +22,13 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-            memory: '200Mi'
-            cpu: '100m'
-          requests:
-            memory: '200Mi'
-            cpu: '100m'
+            memory: '160Mi'
+            cpu: '50m'
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 10
         readinessProbe:
           httpGet:
@@ -54,4 +51,10 @@ spec:
     name: leaven-minigame
   minReplicas: 2
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
