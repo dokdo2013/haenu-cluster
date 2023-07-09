@@ -23,15 +23,12 @@ spec:
         resources:
           limits:
             memory: '300Mi'
-            cpu: '200m'
-          requests:
-            memory: '300Mi'
-            cpu: '200m'
+            cpu: '100m'
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 25
           periodSeconds: 10
         readinessProbe:
           httpGet:
@@ -52,6 +49,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: musicbook-fe
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70

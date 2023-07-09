@@ -29,7 +29,7 @@ spec:
           httpGet:
             path: /health
             port: 4200
-          initialDelaySeconds: 10
+          initialDelaySeconds: 20
           periodSeconds: 10
         readinessProbe:
           httpGet:
