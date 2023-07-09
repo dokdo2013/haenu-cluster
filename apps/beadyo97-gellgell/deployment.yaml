@@ -54,4 +54,3 @@ spec:
     name: beadyo97-gellgell
   minReplicas: 2
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
