@@ -6,6 +6,7 @@ metadata:
   labels:
     app: gpt-api
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: gpt-api
@@ -20,35 +21,18 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 9900
-        resources:
-          limits:
-            memory: '150Mi'
-            cpu: '100m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 9900
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 9900
-          initialDelaySeconds: 5
-          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: gpt-api
-  namespace: api
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: gpt-api
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: gpt-api
+#   namespace: api
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: gpt-api
+#   minReplicas: 2
+#   maxReplicas: 10

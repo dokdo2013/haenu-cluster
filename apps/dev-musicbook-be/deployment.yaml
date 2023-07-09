@@ -6,7 +6,7 @@ metadata:
   labels:
     app: dev-musicbook-be
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: dev-musicbook-be
@@ -21,22 +21,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
-        resources:
-          limits:
-            memory: '300Mi'
-            cpu: '200m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
         

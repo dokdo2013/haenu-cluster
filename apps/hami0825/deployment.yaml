@@ -19,13 +19,6 @@ spec:
       - name: hami0825
         image: hyeonwoo5342/hami0825:1
         imagePullPolicy: Always
-        resources:
-          limits:
-            memory: '250Mi'
-            cpu: '70m'
-          requests:
-            memory: '250Mi'
-            cpu: '70m'
         envFrom:
         - secretRef:
             name: hami0825-secret

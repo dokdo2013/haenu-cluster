@@ -21,38 +21,18 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            memory: '150Mi'
-            cpu: '50m'
-          requests:
-            memory: '150Mi'
-            cpu: '50m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: cuk-haenu-com
-  namespace: legacy
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: cuk-haenu-com
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 60
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: cuk-haenu-com
+#   namespace: legacy
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: cuk-haenu-com
+#   minReplicas: 2
+#   maxReplicas: 10
