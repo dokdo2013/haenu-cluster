@@ -6,6 +6,7 @@ metadata:
   labels:
     app: moneymoney-front
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: moneymoney-front
@@ -42,16 +43,15 @@ spec:
       imagePullSecrets:
       - name: dockerhub-secret
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: moneymoney-front
-  namespace: haenu
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: moneymoney-front
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 60
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: moneymoney-front
+#   namespace: haenu
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: moneymoney-front
+#   minReplicas: 2
+#   maxReplicas: 10

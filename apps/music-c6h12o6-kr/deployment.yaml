@@ -54,4 +54,10 @@ spec:
     name: music-c6h12o6-kr
   minReplicas: 3
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 60
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
