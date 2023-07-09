@@ -21,22 +21,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
-        resources:
-          limits:
-            memory: '200Mi'
-            cpu: '50m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
 ---
