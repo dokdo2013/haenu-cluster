@@ -6,6 +6,7 @@ metadata:
   labels:
     app: afdiscord-web
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: afdiscord-web
@@ -23,35 +24,32 @@ spec:
         resources:
           limits:
             memory: '200Mi'
-            cpu: '100m'
-          requests:
-            memory: '200Mi'
-            cpu: '100m'
+            cpu: '50m'
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 30
           periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: afdiscord-web
-  namespace: haenu
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: afdiscord-web
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: afdiscord-web
+#   namespace: haenu
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: afdiscord-web
+#   minReplicas: 2
+#   maxReplicas: 10
+#   targetCPUUtilizationPercentage: 70
