@@ -22,11 +22,8 @@ spec:
         - containerPort: 80
         resources:
           limits:
-            memory: '250Mi'
-            cpu: '100m'
-          requests:
-            memory: '250Mi'
-            cpu: '100m'
+            memory: '200Mi'
+            cpu: '50m'
         livenessProbe:
           httpGet:
             path: /health
@@ -54,4 +51,10 @@ spec:
     name: c6h12o6-api
   minReplicas: 3
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
