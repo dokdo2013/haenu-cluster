@@ -36,4 +36,3 @@ spec:
 #     name: afdiscord-web
 #   minReplicas: 2
 #   maxReplicas: 10
-#   targetCPUUtilizationPercentage: 70
