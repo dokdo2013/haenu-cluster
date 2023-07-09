@@ -6,6 +6,7 @@ metadata:
   labels:
     app: catolling
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: catolling
@@ -14,7 +15,6 @@ spec:
       labels:
         app: catolling
     spec:
-      replicas: 2
       containers:
       - name: catolling
         image: hyeonwoo5342/catolling:4
