@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-minigame
-        image: hyeonwoo5342/leaven-minigame:17
+        image: hyeonwoo5342/leaven-minigame:18
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
