@@ -1,13 +1,24 @@
-# haenu-cluster
-Haenu Cluster GitOps Repository
+# haenu-clusters
+Haenu Clusters GitOps Repository
 
-## 구조
+## 기본 구조
 - Cluster : Vultr Kubernetes Engine (VKE)
 - Container Registry : Docker Hub
 - CI : Github Actions
 - CD : ArgoCD
 
 Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub -> Change `haenu-cluster` repo's image tag -> ArgoCD Trigger -> Sync k8s cluster
+
+## 클러스터 구조 (작업 중)
+기존 단일 클러스터 구조에서 Management Cluster과 Develop Cluster를 추가하여 보다 효율적으로 클러스터를 운영하고자 합니다.
+
+- Production Cluster (prd) : 프로덕션 환경의 앱을 배포합니다. HA, 무중단 배포 등 프로덕션 환경에 알맞은 설정을 합니다.
+- Develop Cluster (dev) : 개발/테스트 환경의 앱을 배포합니다.
+- Management Cluster (mgmt) : ArgoCD, Grafana 등 공통 앱을 배포합니다.
+
+## Terraform (TBD)
+
+Terraform으로 IaC 작업 예정입니다.
 
 ## 주요 관리 앱
 도메인으로 연결되어 있으면 경로를 작성합니다. 외부로 열려있는 앱들은 보안을 위해 접속 IP를 제한합니다.
@@ -34,3 +45,9 @@ Git Push -> Build Container Image (Github Actions) -> Upload image to Docker Hub
 
 ## 배포 앱 정보
 `docs/apps/README.md` 참고
+
+## TODO
+- 클러스터 분리 (mgmt - prod - dev)
+- 데이터베이스 이전 (RDS to Vitess)
+- IaC 구축
+- 브랜치별 배포 전략 구축
