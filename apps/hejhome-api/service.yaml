@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hejhome-api
+  namespace: api
+  labels:
+    app: hejhome-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    app: hejhome-api

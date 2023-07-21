@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hejhome-api
+  namespace: api
+  labels:
+    app: hejhome-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hejhome-api
+  template:
+    metadata:
+      labels:
+        app: hejhome-api
+    spec:
+      containers:
+      - name: hejhome-api
+        image: hyeonwoo5342/hejhome-api:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        # envFrom:
+        # - secretRef:
+        #     name: hejhome-api-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
