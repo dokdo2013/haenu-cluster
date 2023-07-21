@@ -21,6 +21,18 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
         # envFrom:
         # - secretRef:
         #     name: hejhome-api-secret
