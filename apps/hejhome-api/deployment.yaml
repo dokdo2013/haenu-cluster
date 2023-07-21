@@ -6,7 +6,6 @@ metadata:
   labels:
     app: hejhome-api
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: hejhome-api
@@ -21,20 +20,44 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            memory: '200Mi'
+            cpu: '70m'
         livenessProbe:
           httpGet:
             path: /health
             port: 3000
-          initialDelaySeconds: 20
+          initialDelaySeconds: 35
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /health
             port: 3000
-          initialDelaySeconds: 10
+          initialDelaySeconds: 25
           periodSeconds: 10
         # envFrom:
         # - secretRef:
         #     name: hejhome-api-secret
       imagePullSecrets:
       - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hejhome-api
+  namespace: api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hejhome-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
