@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-multi
-        image: hyeonwoo5342/leaven-multi:17
+        image: hyeonwoo5342/leaven-multi:18
         imagePullPolicy: Always
         ports:
         - containerPort: 80
