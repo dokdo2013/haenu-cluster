@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vmusic-be
+  namespace: api
+  labels:
+    app: vmusic-be
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+  selector:
+    app: vmusic-be

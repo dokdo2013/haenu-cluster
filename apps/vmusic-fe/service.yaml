@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vmusic-fe
+  namespace: haenu
+  labels:
+    app: vmusic-fe
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    app: vmusic-fe
