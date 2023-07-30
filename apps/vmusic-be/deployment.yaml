@@ -36,6 +36,9 @@ spec:
             port: 8000
           initialDelaySeconds: 25
           periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: vmusic-secret
       imagePullSecrets:
       - name: dockerhub-secret
 ---
