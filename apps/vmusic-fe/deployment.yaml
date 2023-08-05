@@ -20,6 +20,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: vmusic-fe-configmap
         resources:
           limits:
             memory: '300Mi'
