@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: twitch-docs-i18n
+  name: vitess-docs-kr
   namespace: haenu
   labels:
-    app: twitch-docs-i18n
+    app: vitess-docs-kr
 spec:
   selector:
     matchLabels:
-      app: twitch-docs-i18n
+      app: vitess-docs-kr
   template:
     metadata:
       labels:
-        app: twitch-docs-i18n
+        app: vitess-docs-kr
     spec:
       containers:
-      - name: twitch-docs-i18n
-        image: hyeonwoo5342/twitch-docs-i18n:4
+      - name: vitess-docs-kr
+        image: hyeonwoo5342/vitess-docs-kr:4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -42,13 +42,13 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: twitch-docs-i18n
+  name: vitess-docs-kr
   namespace: haenu
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: twitch-docs-i18n
+    name: vitess-docs-kr
   minReplicas: 2
   maxReplicas: 10
   metrics:
