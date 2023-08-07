@@ -19,22 +19,25 @@ spec:
         image: hyeonwoo5342/vitess-docs-kr:2
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         resources:
           limits:
-            memory: '160Mi'
-            cpu: '60m'
+            memory: '20Mi'
+            cpu: '10m'
+          requests:
+            memory: '20Mi'
+            cpu: '10m'
         livenessProbe:
           httpGet:
             path: /
-            port: 3000
-          initialDelaySeconds: 40
+            port: 80
+          initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
-            port: 3000
-          initialDelaySeconds: 25
+            port: 80
+          initialDelaySeconds: 5
           periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
