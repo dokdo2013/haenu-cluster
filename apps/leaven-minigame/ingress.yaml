@@ -17,4 +17,4 @@ spec:
           service:
             name: leaven-minigame
             port:
-              number: 3000
+              number: 80
