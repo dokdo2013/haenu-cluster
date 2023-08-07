@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-            memory: '140Mi'
+            memory: '160Mi'
             cpu: '60m'
         livenessProbe:
           httpGet:
