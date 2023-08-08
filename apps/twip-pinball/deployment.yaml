@@ -24,18 +24,18 @@ spec:
         #   limits:
         #     memory: '500Mi'
         #     cpu: '160m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 50
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 40
-          periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 3000
+        #   initialDelaySeconds: 50
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 3000
+        #   initialDelaySeconds: 40
+        #   periodSeconds: 10
       imagePullSecrets:
       - name: dockerhub-secret
 ---
