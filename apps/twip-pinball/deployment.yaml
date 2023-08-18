@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: twip-pinball
-        image: hyeonwoo5342/twip-pinball:13
+        image: hyeonwoo5342/twip-pinball:14
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
