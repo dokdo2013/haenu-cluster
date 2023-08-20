@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: dev-musicbook-be
-        image: hyeonwoo5342/dev-musicbook-be:13
+        image: hyeonwoo5342/dev-musicbook-be:14
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
