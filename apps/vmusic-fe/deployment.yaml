@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vmusic-fe
-        image: hyeonwoo5342/vmusic-fe:17
+        image: hyeonwoo5342/vmusic-fe:18
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
