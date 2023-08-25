@@ -7,3 +7,9 @@ variable "vultr_api_key" {
 #     region = "sea"
 #     os_id = 167
 # }
+
+resource "vultr_kubernetes" "haenu" {
+  # (resource arguments)
+	region = "sel"
+	label = "haenu"
+}

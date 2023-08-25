@@ -4,7 +4,7 @@ terraform {
     organization = "haenu"
 
     workspaces {
-      name = "haenu-cluster"
+      name = "haenu-cluster-vultr"
     }
   }
 
