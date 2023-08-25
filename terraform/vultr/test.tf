@@ -10,7 +10,7 @@ variable "vultr_api_key" {
 
 resource "vultr_kubernetes" "haenu" {
   # (resource arguments)
-	region = "sel"
-	label = "haenu"
-	version = "1.27.2"
+	# region = "sel"
+	# label = "haenu"
+	# version = "v1.27.2+1"
 }
