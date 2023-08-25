@@ -8,9 +8,9 @@ variable "vultr_api_key" {
 #     os_id = 167
 # }
 
-resource "vultr_kubernetes" "haenu" {
-  # (resource arguments)
-	region = "icn"
-	label = "haenu"
-	version = "v1.27.2+1"
-}
+# resource "vultr_kubernetes" "haenu" {
+#   # (resource arguments)
+# 	region = "icn"
+# 	label = "haenu"
+# 	version = "v1.27.2+1"
+# }
