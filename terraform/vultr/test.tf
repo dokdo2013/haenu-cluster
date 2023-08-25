@@ -12,4 +12,5 @@ resource "vultr_kubernetes" "haenu" {
   # (resource arguments)
 	region = "sel"
 	label = "haenu"
+	version = "1.27.2"
 }
