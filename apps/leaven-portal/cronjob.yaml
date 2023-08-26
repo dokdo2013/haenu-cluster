@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: leaven-vod-update
+  name: leaven-portal-update
   namespace: leaven
 spec:
   # every 7 minutes
@@ -18,14 +18,14 @@ spec:
             - /bin/sh
             - -c
             - >
-              curl -X GET "http://leaven-vod:3000/api/cron/update"
+              curl -X GET "http://leaven-portal:3000/api/cron/update"
           restartPolicy: OnFailure
 
 ---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: leaven-vod-live
+  name: leaven-portal-live
   namespace: leaven
 spec:
   # every 5 minutes 
@@ -42,5 +42,5 @@ spec:
             - /bin/sh
             - -c
             - >
-              curl -X GET "http://leaven-vod:3000/api/cron/live"
+              curl -X GET "http://leaven-portal:3000/api/cron/live"
           restartPolicy: OnFailure

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: leaven-vod-ingress
+  name: leaven-portal-ingress
   namespace: leaven
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -12,13 +12,13 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-name: "route"
 spec:
   rules:
-  - host: vod.leaven.team
+  - host: leaven.team
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: leaven-vod
+            name: leaven-portal
             port:
               number: 3000
