@@ -4,8 +4,8 @@ metadata:
   name: leaven-vod-update
   namespace: leaven
 spec:
-  # every 5 minutes
-  schedule: "*/5 * * * *"
+  # every 7 minutes
+  schedule: "*/7 * * * *"
   timeZone: "Asia/Seoul"
   jobTemplate:
     spec:
@@ -19,4 +19,28 @@ spec:
             - -c
             - >
               curl -X GET "http://leaven-vod:3000/api/cron/update"
+          restartPolicy: OnFailure
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leaven-vod-live
+  namespace: leaven
+spec:
+  # every 5 minutes 
+  schedule: "*/5 * * * *"
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X GET "http://leaven-vod:3000/api/cron/live"
           restartPolicy: OnFailure
