@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-vod
+  namespace: leaven
+  labels:
+    app: leaven-vod
+spec:
+  selector:
+    matchLabels:
+      app: leaven-vod
+  template:
+    metadata:
+      labels:
+        app: leaven-vod
+    spec:
+      containers:
+      - name: leaven-vod
+        image: hyeonwoo5342/leaven-vod:44
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '160Mi'
+            cpu: '50m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: leaven-vod
+  namespace: leaven
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: leaven-vod
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
