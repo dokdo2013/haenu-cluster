@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-vod
-        image: hyeonwoo5342/leaven-vod:3
+        image: hyeonwoo5342/leaven-vod:4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
