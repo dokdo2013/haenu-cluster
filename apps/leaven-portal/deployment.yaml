@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leaven-portal
-        image: hyeonwoo5342/leaven-portal:8
+        image: hyeonwoo5342/leaven-portal:13
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
