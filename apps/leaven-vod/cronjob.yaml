@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leaven-vod-update
+  namespace: leaven
+spec:
+  # every 5 minutes
+  schedule: "*/10 * * * *"
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X POST "http://leaven-vod:3000/api/cron/update"
+          restartPolicy: OnFailure
