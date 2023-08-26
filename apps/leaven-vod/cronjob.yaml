@@ -18,5 +18,5 @@ spec:
             - /bin/sh
             - -c
             - >
-              curl -X POST "http://leaven-vod:3000/api/cron/update"
+              curl -X GET "http://leaven-vod:3000/api/cron/update"
           restartPolicy: OnFailure
