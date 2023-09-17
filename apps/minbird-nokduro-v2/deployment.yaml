@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: minbird-nokduro-v2
-        image: hyeonwoo5342/minbird-nokduro-v2:32
+        image: hyeonwoo5342/minbird-nokduro-v2:2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
