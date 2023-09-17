@@ -36,9 +36,6 @@ spec:
             port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
-        envFrom:
-        - secretRef:
-            name: minbird-nokduro-v2-secret
       imagePullSecrets:
       - name: dockerhub-secret
 ---
