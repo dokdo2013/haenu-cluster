@@ -18,7 +18,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: yudarlinn-listener
-        image: hyeonwoo5342/yudarlinn-listener:3
+        image: hyeonwoo5342/yudarlinn-listener:4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
