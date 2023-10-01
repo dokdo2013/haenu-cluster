@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yudarlinn-listener
+  namespace: leaven
+  labels:
+    app: yudarlinn-listener
+spec:
+  selector:
+    matchLabels:
+      app: yudarlinn-listener
+  template:
+    metadata:
+      labels:
+        app: yudarlinn-listener
+    spec:
+      containers:
+      - name: yudarlinn-listener
+        image: hyeonwoo5342/yudarlinn-listener:10
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '300Mi'
+            cpu: '150m'
+#        livenessProbe:
+#          httpGet:
+#            path: /health
+#            port: 8000
+#          initialDelaySeconds: 40
+#          periodSeconds: 10
+#        readinessProbe:
+#          httpGet:
+#            path: /health
+#            port: 8000
+#          initialDelaySeconds: 25
+#          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: yudarlinn-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: yudarlinn-listener
+  namespace: leaven
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: yudarlinn-listener
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 60
