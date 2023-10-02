@@ -14,6 +14,8 @@ spec:
       labels:
         app: vitess-docs-kr
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: vitess-docs-kr
         image: hyeonwoo5342/vitess-docs-kr:7

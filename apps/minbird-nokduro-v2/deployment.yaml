@@ -14,6 +14,8 @@ spec:
       labels:
         app: minbird-nokduro-v2
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: minbird-nokduro-v2
         image: hyeonwoo5342/minbird-nokduro-v2:2

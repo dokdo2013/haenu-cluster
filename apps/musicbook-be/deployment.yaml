@@ -14,6 +14,8 @@ spec:
       labels:
         app: musicbook-be
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: musicbook-be
         image: hyeonwoo5342/musicbook-be:6

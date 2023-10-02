@@ -14,6 +14,8 @@ spec:
       labels:
         app: vmusic-fe
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: vmusic-fe
         image: hyeonwoo5342/vmusic-fe:19

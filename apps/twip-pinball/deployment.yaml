@@ -14,6 +14,8 @@ spec:
       labels:
         app: twip-pinball
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: twip-pinball
         image: hyeonwoo5342/twip-pinball:14

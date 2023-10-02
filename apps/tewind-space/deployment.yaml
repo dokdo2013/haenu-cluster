@@ -14,6 +14,8 @@ spec:
       labels:
         app: tewind-space
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: tewind-space
         image: hyeonwoo5342/tewind-space:4

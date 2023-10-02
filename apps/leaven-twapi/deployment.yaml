@@ -15,6 +15,8 @@ spec:
       labels:
         app: leaven-twapi
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-twapi
         image: hyeonwoo5342/leaven-twapi:3
