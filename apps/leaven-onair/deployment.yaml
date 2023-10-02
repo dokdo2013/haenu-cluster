@@ -14,6 +14,8 @@ spec:
       labels:
         app: leaven-onair
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-onair
         image: hyeonwoo5342/leaven-onair:22

@@ -14,6 +14,8 @@ spec:
       labels:
         app: junharry
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: junharry
         image: hyeonwoo5342/junharry:34

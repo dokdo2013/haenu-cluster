@@ -14,6 +14,8 @@ spec:
       labels:
         app: c6h12o6-api
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: c6h12o6-api
         image: hyeonwoo5342/c6h12o6-api:4

@@ -15,6 +15,8 @@ spec:
       labels:
         app: gpt-api
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: gpt-api
         image: hyeonwoo5342/gpt-api:14

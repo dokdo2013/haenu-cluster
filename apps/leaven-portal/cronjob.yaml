@@ -11,6 +11,8 @@ spec:
     spec:
       template:
         spec:
+          nodeSelector:
+            "vke.vultr.com/node-pool": "main-node-pool"
           containers:
           - name: curl-container
             image: appropriate/curl:latest
@@ -34,6 +36,8 @@ spec:
     spec:
       template:
         spec:
+          nodeSelector:
+            "vke.vultr.com/node-pool": "main-node-pool"
           containers:
           - name: curl-container
             image: appropriate/curl:latest
@@ -57,6 +61,8 @@ spec:
     spec:
       template:
         spec:
+          nodeSelector:
+            "vke.vultr.com/node-pool": "main-node-pool"
           containers:
           - name: curl-container
             image: appropriate/curl:latest

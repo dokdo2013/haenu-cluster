@@ -15,6 +15,8 @@ spec:
       labels:
         app: hami0825
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: hami0825
         image: hyeonwoo5342/hami0825:1

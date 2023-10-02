@@ -14,6 +14,8 @@ spec:
       labels:
         app: leaven-portal
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-portal
         image: hyeonwoo5342/leaven-portal:32
