@@ -14,6 +14,8 @@ spec:
       labels:
         app: beadyo97-gellgell
     spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "haenu"
       containers:
       - name: beadyo97-gellgell
         image: hyeonwoo5342/beadyo97-gellgell:8
