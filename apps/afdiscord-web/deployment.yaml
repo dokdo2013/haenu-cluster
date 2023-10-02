@@ -16,7 +16,7 @@ spec:
         app: afdiscord-web
     spec:
       nodeSelector:
-        "vke.vultr.com/node-pool": "haenu"
+        "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: afdiscord-web
         image: hyeonwoo5342/afdiscord-web:1
