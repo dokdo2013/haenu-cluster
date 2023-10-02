@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yudarlinn-listener
-  namespace: leaven
+  name: archivers-listener
+  namespace: archivers
   labels:
-    app: yudarlinn-listener
+    app: archivers-listener
 spec:
   selector:
     matchLabels:
-      app: yudarlinn-listener
+      app: archivers-listener
   template:
     metadata:
       labels:
-        app: yudarlinn-listener
+        app: archivers-listener
     spec:
-      serviceAccountName: yudarlinn-listener
+      serviceAccountName: archivers-listener
       automountServiceAccountToken: true
       containers:
-      - name: yudarlinn-listener
-        image: hyeonwoo5342/yudarlinn-listener:7
+      - name: archivers-listener
+        image: hyeonwoo5342/archivers-listener:7
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -40,20 +40,20 @@ spec:
           periodSeconds: 10
         envFrom:
         - secretRef:
-            name: yudarlinn-secret
+            name: archivers-secret
       imagePullSecrets:
       - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: yudarlinn-listener
-  namespace: leaven
+  name: archivers-listener
+  namespace: archivers
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: yudarlinn-listener
+    name: archivers-listener
   minReplicas: 3
   maxReplicas: 10
   metrics:
