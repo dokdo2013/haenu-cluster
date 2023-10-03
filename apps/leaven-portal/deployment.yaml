@@ -18,7 +18,7 @@ spec:
         "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-portal
-        image: hyeonwoo5342/leaven-portal:32
+        image: hyeonwoo5342/leaven-portal:34
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
