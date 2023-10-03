@@ -18,7 +18,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: archivers-listener
-        image: hyeonwoo5342/archivers-listener:8
+        image: hyeonwoo5342/archivers-listener:9
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
