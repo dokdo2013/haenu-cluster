@@ -4,7 +4,7 @@ metadata:
   name: archivers-listener-ingress
   namespace: archivers
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: nginx
 spec:
@@ -13,7 +13,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/media-api/"
+        path: "/media-api"
         backend:
           service:
             name: archivers-listener
