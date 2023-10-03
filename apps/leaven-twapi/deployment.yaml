@@ -19,7 +19,7 @@ spec:
         "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-twapi
-        image: hyeonwoo5342/leaven-twapi:5
+        image: hyeonwoo5342/leaven-twapi:6
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
