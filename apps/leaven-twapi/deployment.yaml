@@ -6,7 +6,7 @@ metadata:
   labels:
     app: leaven-twapi
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: leaven-twapi
