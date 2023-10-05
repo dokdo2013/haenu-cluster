@@ -18,7 +18,7 @@ spec:
         "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: junharry-test
-        image: hyeonwoo5342/junharry-test:61
+        image: hyeonwoo5342/junharry-test:62
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
