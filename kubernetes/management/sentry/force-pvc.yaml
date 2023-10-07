@@ -1,0 +1,107 @@
+# Vultr가 PV를 40Gi부터 지원하기 때문에 Helm에서 PVC Size 설정 못하는 경우 수동으로 PVC 지정해서 40Gi로 맞춰줘야 함
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-kafka-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-rabbitmq-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-postgresql-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-zookeeper-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-zookeeper-clickhouse-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-zookeeper-clickhouse-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-zookeeper-clickhouse-1
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-sentry-sentry-postgresql-0
+  namespace: sentry
+spec:
+  storageClassName: vultr-block-storage-hdd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 40Gi
+---
+
