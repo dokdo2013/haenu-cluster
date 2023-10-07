@@ -1,13 +1,4 @@
 terraform {
-	backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "haenu"
-
-    workspaces {
-      name = "haenu-cluster-vultr"
-    }
-  }
-
   required_providers {
     vultr = {
       source = "vultr/vultr"
@@ -22,4 +13,3 @@ provider "vultr" {
   rate_limit = 100
   retry_limit = 3
 }
-
