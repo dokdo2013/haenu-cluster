@@ -13,7 +13,7 @@ spec:
     http:
       paths:
       - path: /media-api(/|$)(.*)
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: archivers-listener
