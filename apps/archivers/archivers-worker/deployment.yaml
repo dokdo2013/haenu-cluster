@@ -18,7 +18,7 @@ spec:
         "vke.vultr.com/node-pool": "archivers-worker"
       containers:
       - name: archivers-worker
-        image: hyeonwoo5342/archivers-worker:4
+        image: hyeonwoo5342/archivers-worker:5
         imagePullPolicy: Always
         ports:
         - containerPort: 3003
