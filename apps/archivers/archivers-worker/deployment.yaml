@@ -14,8 +14,6 @@ spec:
       labels:
         app: archivers-worker
     spec:
-      serviceAccountName: archivers-worker
-      automountServiceAccountToken: true
       nodeSelector:
         "vke.vultr.com/node-pool": "archivers-worker"
       containers:
