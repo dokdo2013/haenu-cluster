@@ -14,8 +14,6 @@ spec:
       labels:
         app: archivers-worker
     spec:
-      nodeSelector:
-        "vke.vultr.com/node-pool": "archivers-worker"
       containers:
       - name: archivers-worker
         image: hyeonwoo5342/archivers-worker:1
