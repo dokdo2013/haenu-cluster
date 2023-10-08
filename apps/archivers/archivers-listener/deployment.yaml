@@ -20,7 +20,7 @@ spec:
         "vke.vultr.com/node-pool": "archivers-main"
       containers:
       - name: archivers-listener
-        image: hyeonwoo5342/archivers-listener:18
+        image: hyeonwoo5342/archivers-listener:19
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
