@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: archivers-listener
+  namespace: argocd
+spec:
+  destination:
+    name: vke-archivers
+    namespace: archivers
+    server: ''
+  source:
+    path: apps/archivers/archivers-listener
+    repoURL: 'https://github.com/dokdo2013/haenu-cluster'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
