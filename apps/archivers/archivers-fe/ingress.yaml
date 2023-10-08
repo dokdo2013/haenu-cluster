@@ -17,13 +17,6 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/bull/*"
-        backend:
-          service:
-            name: archivers-listener
-            port:
-              number: 3000
-      - pathType: Prefix
         path: "/"
         backend:
           service:
