@@ -23,3 +23,10 @@ spec:
             name: archivers-fe
             port:
               number: 3000
+      - pathType: Prefix
+        path: "/bull"
+        backend:
+          service:
+            name: archivers-listener
+            port:
+              number: 3000
