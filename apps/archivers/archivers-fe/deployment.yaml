@@ -54,7 +54,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: archivers-fe
-  minReplicas: 3
+  minReplicas: 10
   maxReplicas: 20
   metrics:
   - type: Resource
