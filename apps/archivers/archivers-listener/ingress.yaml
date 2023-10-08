@@ -26,7 +26,7 @@ metadata:
   name: archivers-bull-static-ingress
   namespace: archivers
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /bull/static/$1
+    nginx.ingress.kubernetes.io/rewrite-target: /bull/$1/$2
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: nginx
 spec:
@@ -34,7 +34,7 @@ spec:
   - host: archivers.app
     http:
       paths:
-      - path: /bull/static/(.*)
+      - path: /bull/(.*)/(.*)
         pathType: Prefix
         backend:
           service:
