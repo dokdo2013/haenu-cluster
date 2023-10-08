@@ -12,7 +12,7 @@ spec:
   - host: archivers.app
     http:
       paths:
-      - path: /media-api(/|$)(.*)
+      - path: /media-api/(.*)
         pathType: Prefix
         backend:
           service:
