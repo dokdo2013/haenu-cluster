@@ -12,8 +12,15 @@ spec:
   - host: archivers.app
     http:
       paths:
-      - pathType: Prefix
-        path: "/media-api/(.*)"
+      - path: /media-api(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: archivers-listener
+            port:
+              number: 3000
+      - path: /bull/static(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: archivers-listener

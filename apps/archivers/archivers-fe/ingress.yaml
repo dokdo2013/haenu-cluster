@@ -23,13 +23,3 @@ spec:
             name: archivers-fe
             port:
               number: 3000
-  - host: new.archivers.app
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: archivers-fe
-            port:
-              number: 3000
