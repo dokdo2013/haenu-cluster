@@ -19,8 +19,23 @@ spec:
             name: archivers-listener
             port:
               number: 3000
-      - path: /bull/static(/|$)(.*)
-        pathType: ImplementationSpecific
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: archivers-bull-static-ingress
+  namespace: archivers
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /bull/static/$1
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: archivers.app
+    http:
+      paths:
+      - path: /bull/static/(.*)
+        pathType: Prefix
         backend:
           service:
             name: archivers-listener
