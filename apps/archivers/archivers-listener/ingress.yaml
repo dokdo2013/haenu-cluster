@@ -19,13 +19,6 @@ spec:
             name: archivers-listener
             port:
               number: 3000
-      - path: /bull(/|$)(.*)
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: archivers-listener
-            port:
-              number: 3000
       - path: /bull/static(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
@@ -34,6 +27,13 @@ spec:
             port:
               number: 3000
       - path: /bull/api(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: archivers-listener
+            port:
+              number: 3000
+      - path: /bull/api/queue(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:
