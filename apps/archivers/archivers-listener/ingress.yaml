@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: archivers-listener-ingress
+  namespace: archivers
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: archivers.app
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/media-api/(.*)"
+        backend:
+          service:
+            name: archivers-listener
+            port:
+              number: 3000

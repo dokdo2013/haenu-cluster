@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: archivers-listener
+  namespace: archivers
+  labels:
+    app: archivers-listener
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    app: archivers-listener
