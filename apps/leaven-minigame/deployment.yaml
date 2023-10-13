@@ -18,7 +18,7 @@ spec:
         "vke.vultr.com/node-pool": "main-node-pool"
       containers:
       - name: leaven-minigame
-        image: hyeonwoo5342/leaven-minigame:67
+        image: hyeonwoo5342/leaven-minigame:68
         imagePullPolicy: Always
         ports:
         - containerPort: 80
