@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: beadyo97-gellgell
+  namespace: argocd
+spec:
+  destination:
+    name: vke-haenu
+    namespace: leaven
+    server: ''
+  source:
+    path: apps/leaven/beadyo97-gellgell
+    repoURL: 'https://github.com/dokdo2013/haenu-cluster'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
