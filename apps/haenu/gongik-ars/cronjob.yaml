@@ -1,0 +1,55 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gongik-ars-cronjob1
+  namespace: haenu
+spec:
+  schedule: "0 19 * * 1-5"  # 한국 시간 저녁 7시
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            env:
+            - name: PHONE_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: gongik-ars-phone1-secret
+                  key: PHONE_NUMBER
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X POST "http://gongik-ars:3008/call?to=$PHONE_NUMBER"
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gongik-ars-cronjob2
+  namespace: haenu
+spec:
+  schedule: "30 18 * * 1-5"  # 한국 시간 저녁 6시 30분
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            env:
+            - name: PHONE_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: gongik-ars-phone2-secret
+                  key: PHONE_NUMBER
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X POST "http://gongik-ars:3008/call?to=$PHONE_NUMBER"
+          restartPolicy: OnFailure

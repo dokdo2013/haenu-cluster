@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-minigame
+  namespace: leaven
+  labels:
+    app: leaven-minigame
+spec:
+  selector:
+    matchLabels:
+      app: leaven-minigame
+  template:
+    metadata:
+      labels:
+        app: leaven-minigame
+    spec:
+      containers:
+      - name: leaven-minigame
+        image: hyeonwoo5342/leaven-minigame:69
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: '20Mi'
+            cpu: '10m'
+          requests:
+            memory: '20Mi'
+            cpu: '10m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: leaven-minigame
+  namespace: leaven
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: leaven-minigame
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70

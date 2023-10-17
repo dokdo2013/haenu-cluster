@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moneymoney-front
+  namespace: haenu
+  labels:
+    app: moneymoney-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moneymoney-front
+  template:
+    metadata:
+      labels:
+        app: moneymoney-front
+    spec:
+      containers:
+      - name: moneymoney-front
+        image: hyeonwoo5342/moneymoney-front:3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: '20Mi'
+            cpu: '10m'
+          requests:
+            memory: '20Mi'
+            cpu: '10m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: dockerhub-secret

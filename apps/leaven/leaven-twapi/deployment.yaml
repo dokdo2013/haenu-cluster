@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaven-twapi
+  namespace: leaven
+  labels:
+    app: leaven-twapi
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: leaven-twapi
+  template:
+    metadata:
+      labels:
+        app: leaven-twapi
+    spec:
+      containers:
+      - name: leaven-twapi
+        image: hyeonwoo5342/leaven-twapi:12
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4200
+        resources:
+          limits:
+            memory: '100Mi'
+            cpu: '30m'
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 4200
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 4200
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: leaven-twapi-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: leaven-twapi
+#   namespace: leaven
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: leaven-twapi
+#   minReplicas: 2
+#   maxReplicas: 10
+#   metrics:
+#   - type: Resource
+#     resource:
+#       name: cpu
+#       target:
+#         type: Utilization
+#         averageUtilization: 70

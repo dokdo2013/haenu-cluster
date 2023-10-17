@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitch-docs-i18n
+  namespace: haenu
+  labels:
+    app: twitch-docs-i18n
+spec:
+  selector:
+    matchLabels:
+      app: twitch-docs-i18n
+  template:
+    metadata:
+      labels:
+        app: twitch-docs-i18n
+    spec:
+      containers:
+      - name: twitch-docs-i18n
+        image: hyeonwoo5342/twitch-docs-i18n:4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '160Mi'
+            cpu: '70m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 40
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 25
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: twitch-docs-i18n
+  namespace: haenu
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: twitch-docs-i18n
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70

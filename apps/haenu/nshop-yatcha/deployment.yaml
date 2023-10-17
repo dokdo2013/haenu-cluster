@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nshop-yatcha
+  namespace: haenu
+  labels:
+    app: nshop-yatcha
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nshop-yatcha
+  template:
+    metadata:
+      labels:
+        app: nshop-yatcha
+    spec:
+      containers:
+      - name: nshop-yatcha
+        image: hyeonwoo5342/nshop-yatcha:2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: '20Mi'
+            cpu: '10m'
+          requests:
+            memory: '20Mi'
+            cpu: '10m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: nshop-yatcha
+#   namespace: haenu
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: nshop-yatcha
+#   minReplicas: 2
+#   maxReplicas: 10

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gongik-ars
+  namespace: haenu
+  labels:
+    app: gongik-ars
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gongik-ars
+  template:
+    metadata:
+      labels:
+        app: gongik-ars
+    spec:
+      containers:
+      - name: gongik-ars
+        image: hyeonwoo5342/gongik-ars:5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3008
+        resources:
+          limits:
+            memory: '150Mi'
+            cpu: '150m'
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3008
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: gongik-ars-secret
+      imagePullSecrets:
+      - name: dockerhub-secret

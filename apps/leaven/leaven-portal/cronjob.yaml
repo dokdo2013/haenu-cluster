@@ -1,0 +1,68 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leaven-portal-update
+  namespace: leaven
+spec:
+  # every 7 minutes
+  schedule: "*/7 * * * *"
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X GET "http://leaven-portal:3000/api/cron/update" -f
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leaven-portal-live
+  namespace: leaven
+spec:
+  # every 5 minutes 
+  schedule: "*/5 * * * *"
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X GET "http://leaven-portal:3000/api/cron/live" -f
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leaven-portal-notice
+  namespace: leaven
+spec:
+  # every 10 minutes 
+  schedule: "*/10 * * * *"
+  timeZone: "Asia/Seoul"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: curl-container
+            image: appropriate/curl:latest
+            args:
+            - /bin/sh
+            - -c
+            - >
+              curl -X GET "http://leaven-portal:3000/api/cron/notice" -f
+          restartPolicy: OnFailure

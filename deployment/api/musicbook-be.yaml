@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: musicbook-be
+  namespace: argocd
+spec:
+  destination:
+    name: vke-haenu
+    namespace: api
+    server: ''
+  source:
+    path: apps/api/musicbook-be
+    repoURL: 'https://github.com/dokdo2013/haenu-cluster'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
