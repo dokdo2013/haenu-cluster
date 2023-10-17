@@ -1,26 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hami0825
-  namespace: haenu
+  name: ejnmeal-be
+  namespace: api
   labels:
-    app: hami0825
+    app: ejnmeal-be
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hami0825
+      app: ejnmeal-be
   template:
     metadata:
       labels:
-        app: hami0825
+        app: ejnmeal-be
     spec:
       containers:
-      - name: hami0825
-        image: hyeonwoo5342/hami0825:1
+      - name: ejnmeal-be
+        image: hyeonwoo5342/ejnmeal-be:2
         imagePullPolicy: Always
+        ports:
+        - containerPort: 6600
         envFrom:
         - secretRef:
-            name: hami0825-secret
+            name: ejnmeal-be-secret
       imagePullSecrets:
       - name: dockerhub-secret
