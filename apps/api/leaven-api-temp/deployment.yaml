@@ -39,15 +39,15 @@ spec:
         envFrom: 
         - secretRef:
             name: leaven-api-temp-secret
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: vke.vultr.com/node-pool
-                operator: In
-                values:
-                - main-node-pool
+#      affinity:
+#        nodeAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#            nodeSelectorTerms:
+#            - matchExpressions:
+#              - key: vke.vultr.com/node-pool
+#                operator: In
+#                values:
+#                - main-node-pool
       imagePullSecrets:
       - name: dockerhub-secret
 ---
