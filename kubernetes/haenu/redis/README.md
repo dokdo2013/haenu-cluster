@@ -6,7 +6,7 @@ https://github.com/bitnami/charts/tree/main/bitnami/redis
 
 ## Installation
 ```bash
-helm install redis -n redis -f values.yaml bitnami/redis
+helm install redis -n default -f values.yaml bitnami/redis
 ```
 
 ## Values Features
