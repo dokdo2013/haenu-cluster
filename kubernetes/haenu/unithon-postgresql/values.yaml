@@ -595,7 +595,7 @@ primary:
   service:
     ## @param primary.service.type Kubernetes Service type
     ##
-    type: LoadBalancer
+    type: ClusterIP
     ## @param primary.service.ports.postgresql PostgreSQL service port
     ##
     ports:
