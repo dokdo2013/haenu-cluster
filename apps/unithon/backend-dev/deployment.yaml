@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
         - name: unithon-backend-dev-init
-          image: hyeonwoo5342/unithon-backend-dev:49
+          image: hyeonwoo5342/unithon-backend-dev:51
           imagePullPolicy: Always
           command: ['sh', '-c', '/app/.venv/bin/python manage.py migrate']
           envFrom:
@@ -25,7 +25,7 @@ spec:
                 name: unithon-backend-dev-secret
       containers:
         - name: unithon-backend-dev
-          image: hyeonwoo5342/unithon-backend-dev:49
+          image: hyeonwoo5342/unithon-backend-dev:51
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
