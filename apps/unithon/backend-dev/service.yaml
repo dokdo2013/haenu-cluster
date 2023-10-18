@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unithon-backend-dev
+  namespace: unithon
+  labels:
+    app: unithon-backend-dev
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+  selector:
+    app: unithon-backend-dev

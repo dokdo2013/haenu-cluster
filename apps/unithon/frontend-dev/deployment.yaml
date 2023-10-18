@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unithon-frontend-dev
+  namespace: unithon
+  labels:
+    app: unithon-frontend-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: unithon-frontend-dev
+  template:
+    metadata:
+      labels:
+        app: unithon-frontend-dev
+    spec:
+      containers:
+        - name: unithon-frontend-dev
+          image: hyeonwoo5342/unithon-frontend-dev:43
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: '150Mi'
+              cpu: '100m'
+            limits:
+              memory: '150Mi'
+              cpu: '100m'
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 25
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10

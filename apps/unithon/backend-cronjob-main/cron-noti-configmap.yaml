@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cron-noti-main-configmap
+  namespace: unithon
+data:
+  FRONTEND_URL: "https://front.haenu.dev"

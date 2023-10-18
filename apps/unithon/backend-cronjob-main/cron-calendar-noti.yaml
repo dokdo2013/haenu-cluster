@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-calendar-noti-main
+  namespace: unithon
+spec:
+  # 매 분마다 실행
+  schedule: "*/1 * * * *"
+  timeZone: Asia/Seoul
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron-calendar-noti-main
+              image: hyeonwoo5342/unithon-calendar-noti-main:2
+              imagePullPolicy: Always
+              ports:
+                - containerPort: 3000
+              envFrom:
+                - configMapRef:
+                    name: cron-noti-main-configmap
+                - secretRef:
+                    name: cron-noti-main-secret
+          restartPolicy: OnFailure

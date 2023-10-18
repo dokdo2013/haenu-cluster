@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-contact-noti-main
+  namespace: unithon
+spec:
+  # 매일 오전 8시에 실행
+  schedule: "0 8 * * *"
+  timeZone: Asia/Seoul
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron-contact-noti-main
+              image: hyeonwoo5342/unithon-contact-noti-main:3
+              imagePullPolicy: Always
+              ports:
+              - containerPort: 3000
+              envFrom:
+              - configMapRef:
+                  name: cron-noti-main-configmap
+              - secretRef:
+                  name: cron-noti-main-secret
+          restartPolicy: OnFailure

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unithon-backend-dev
+  namespace: unithon
+  labels:
+    app: unithon-backend-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unithon-backend-dev
+  template:
+    metadata:
+      labels:
+        app: unithon-backend-dev
+    spec:
+      initContainers:
+        - name: unithon-backend-dev-init
+          image: hyeonwoo5342/unithon-backend-dev:49
+          imagePullPolicy: Always
+          command: ['sh', '-c', '/app/.venv/bin/python manage.py migrate']
+          envFrom:
+            - secretRef:
+                name: unithon-backend-dev-secret
+      containers:
+        - name: unithon-backend-dev
+          image: hyeonwoo5342/unithon-backend-dev:49
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 35
+            periodSeconds: 10
+          envFrom:
+          - secretRef:
+              name: unithon-backend-dev-secret
