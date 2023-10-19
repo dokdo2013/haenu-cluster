@@ -8,6 +8,7 @@ terraform/*/secret-variables.tf
 terraform/*/.terraform
 terraform/*/.terraform.lock.hcl
 terraform/*/vultr_key.tfvars
+terraform/*/terraform.tfvars
 
 # Local .terraform directories
 **/.terraform/*

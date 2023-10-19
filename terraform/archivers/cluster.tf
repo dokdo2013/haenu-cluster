@@ -27,17 +27,17 @@ resource "vultr_kubernetes_node_pools" "archivers-pipeline" {
   node_quantity = 2
   auto_scaler   = true
   min_nodes     = 2
-  max_nodes     = 6
+  max_nodes     = 10
 }
 
 resource "vultr_kubernetes_node_pools" "archivers-worker" {
   cluster_id    = vultr_kubernetes.cluster.id
   label         = "archivers-worker"
-  plan          = "vc2-4c-8gb"
+  plan          = "vc2-2c-4gb"
   node_quantity = 2
   auto_scaler   = true
   min_nodes     = 2
-  max_nodes     = 15
+  max_nodes     = 20
 }
 
 #resource "vultr_kubernetes_node_pools" "archivers-sub" {
