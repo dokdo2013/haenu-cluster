@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: archivers-listener
+  namespace: archivers
+  labels:
+    app: archivers-listener
+spec:
+  selector:
+    matchLabels:
+      app: archivers-listener
+  template:
+    metadata:
+      labels:
+        app: archivers-listener
+    spec:
+      serviceAccountName: archivers-listener
+      automountServiceAccountToken: true
+      nodeSelector:
+        "vke.vultr.com/node-pool": "archivers-main"
+      containers:
+      - name: archivers-listener
+        image: hyeonwoo5342/archivers-listener:25
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '300Mi'
+            cpu: '150m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 25
+          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: archivers-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: archivers-listener
+  namespace: archivers
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: archivers-listener
+  minReplicas: 5
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 60

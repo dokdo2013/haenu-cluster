@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: archivers-fe-ingress
+  namespace: archivers
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+    # Nginx Sticky Session
+    # nginx.ingress.kubernetes.io/affinity: "cookie"
+    # nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+    # nginx.ingress.kubernetes.io/session-cookie-name: "route"
+spec:
+  rules:
+  - host: archivers.app
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: archivers-fe
+            port:
+              number: 3000

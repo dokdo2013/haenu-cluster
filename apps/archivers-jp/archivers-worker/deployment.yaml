@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: archivers-worker
+  namespace: archivers
+  labels:
+    app: archivers-worker
+spec:
+  selector:
+    matchLabels:
+      app: archivers-worker
+  template:
+    metadata:
+      labels:
+        app: archivers-worker
+    spec:
+      nodeSelector:
+        "vke.vultr.com/node-pool": "archivers-worker"
+      containers:
+      - name: archivers-worker
+        image: hyeonwoo5342/archivers-worker:5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3003
+        resources:
+          limits:
+            memory: '400Mi'
+            cpu: '200m'
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3003
+          initialDelaySeconds: 25
+          periodSeconds: 10
+        envFrom:
+        - secretRef:
+            name: archivers-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: archivers-worker
+  namespace: archivers
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: archivers-worker
+  minReplicas: 10
+  maxReplicas: 100
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 70
