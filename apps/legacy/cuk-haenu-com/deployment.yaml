@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: cuk-haenu-com
-        image: hyeonwoo5342/cuk-haenu-com:2
+        image: hyeonwoo5342/cuk-haenu-com:3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
