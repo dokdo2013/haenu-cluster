@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: c6h12o6-api
-        image: hyeonwoo5342/c6h12o6-api:4
+        image: hyeonwoo5342/c6h12o6-api:5
         imagePullPolicy: Always
         ports:
         - containerPort: 80
