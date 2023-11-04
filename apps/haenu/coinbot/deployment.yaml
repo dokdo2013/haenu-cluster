@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: coinbot
-        image: hyeonwoo5342/coinbot:3
+        image: hyeonwoo5342/coinbot:4
         imagePullPolicy: Always
       imagePullSecrets:
       - name: dockerhub-secret
