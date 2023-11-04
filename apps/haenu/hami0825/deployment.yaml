@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hami0825
-        image: hyeonwoo5342/hami0825:1
+        image: hyeonwoo5342/hami0825:3
         imagePullPolicy: Always
         envFrom:
         - secretRef:
