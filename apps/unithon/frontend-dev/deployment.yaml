@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: unithon-frontend-dev
-          image: hyeonwoo5342/unithon-frontend-dev:61
+          image: hyeonwoo5342/unithon-frontend-dev:60
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
