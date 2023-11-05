@@ -23,12 +23,10 @@ Git Push -> Build Container Image (Github Actions / Jenkins) -> Upload image to 
 
 |분류|이름| 경로                                                     |비고|
 |-----|-----|--------------------------------------------------------|-----|
-|CI/CD|ArgoCD| [https://argo.haenu.dev](https://argo.haenu.xyz)       |IP 제한 적용|
-|모니터링|Grafana| [https://grafana.haenu.dev](https://grafana.haenu.xyz) |IP 제한 적용|
+|CI/CD|ArgoCD| [https://argo.haenu.dev](https://argo.haenu.dev)       |IP 제한 적용|
+|모니터링|Grafana| [https://grafana.haenu.dev](https://grafana.haenu.dev) |IP 제한 적용|
 |모니터링|Loki & Promtail|                                                        |파드 로그 수집|
 |모니터링|Prometheus|                                                        |메트릭 수집|
-|모니터링|Uptime Kuma| [https://kuma.haenu.xyz](https://kuma.haenu.xyz)       |Health Check|
-|깃 서버|Gitea| [https://git.haenu.xyz](https://git.haenu.xyz)         |IP 제한 적용|
 |Ingress|Nginx-Ingress-Controller|                                                        ||
 |Secret|Sealed Secret|                                                        |시크릿 관리|
 
