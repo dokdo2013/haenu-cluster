@@ -6,7 +6,7 @@ metadata:
   labels:
     app: dev-musicbook-be
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: dev-musicbook-be
