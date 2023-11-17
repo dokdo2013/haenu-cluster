@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: classting-api
-        image: hyeonwoo5342/classting-api:1
+        image: hyeonwoo5342/classting-api:2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
