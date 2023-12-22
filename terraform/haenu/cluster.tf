@@ -14,8 +14,8 @@ resource "vultr_kubernetes_node_pools" "haenu-main" {
   cluster_id    = vultr_kubernetes.cluster.id
   label         = "haenu-main"
   plan          = "vc2-2c-4gb"
-  node_quantity = 4
+  node_quantity = 7
   auto_scaler   = true
-  min_nodes     = 4
-  max_nodes     = 6
+  min_nodes     = 7
+  max_nodes     = 15
 }
