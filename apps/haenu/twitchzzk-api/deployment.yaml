@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: twitchzzk-api
-        image: hyeonwoo5342/twitchzzk-api:2
+        image: hyeonwoo5342/twitchzzk-api:4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
