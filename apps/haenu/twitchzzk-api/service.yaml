@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: twitchzzk-api
+  namespace: api
+  labels:
+    app: twitchzzk-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    app: twitchzzk-api

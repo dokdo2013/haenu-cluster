@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitchzzk-api
+  namespace: haenu
+  labels:
+    app: twitchzzk-api
+spec:
+  selector:
+    matchLabels:
+      app: twitchzzk-api
+  template:
+    metadata:
+      labels:
+        app: twitchzzk-api
+    spec:
+      containers:
+      - name: twitchzzk-api
+        image: hyeonwoo5342/twitchzzk-api:2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: '200Mi'
+            cpu: '150m'
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 40
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 25
+          periodSeconds: 10
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sleep", "15"]
+      imagePullSecrets:
+      - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: twitchzzk-api
+  namespace: haenu
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: twitchzzk-api
+  minReplicas: 5
+  maxReplicas: 15
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 50
