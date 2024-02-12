@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: music-c6h12o6-kr
-        image: hyeonwoo5342/music.c6h12o6.kr:24
+        image: hyeonwoo5342/music.c6h12o6.kr:25
         imagePullPolicy: Always
         ports:
         - containerPort: 80
