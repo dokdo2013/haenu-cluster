@@ -28,13 +28,13 @@ spec:
             tcpSocket:
               path: /
               port: 8080
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             periodSeconds: 10
           readinessProbe:
             tcpSocket:
               path: /
               port: 8080
-            initialDelaySeconds: 50
+            initialDelaySeconds: 60
             periodSeconds: 10
           lifecycle:
             preStop:
