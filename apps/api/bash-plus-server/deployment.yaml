@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bash-plus-server
+  namespace: api
+  labels:
+    app: bash-plus-server
+spec:
+  selector:
+    matchLabels:
+      app: bash-plus-server
+  template:
+    metadata:
+      labels:
+        app: bash-plus-server
+    spec:
+      containers:
+        - name: bash-plus-server
+          image: hyeonwoo5342/bash-plus-server:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "15"]
+          envFrom:
+            - secretRef:
+                name: bash-plus-server-secret
+      imagePullSecrets:
+        - name: dockerhub-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: bash-plus-server
+  namespace: api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: bash-plus-server
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
