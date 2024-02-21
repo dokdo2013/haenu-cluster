@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: bash-plus-server
-          image: hyeonwoo5342/bash-plus-server:3
+          image: hyeonwoo5342/bash-plus-server:4
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
