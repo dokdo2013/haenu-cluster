@@ -28,13 +28,13 @@ spec:
             httpGet:
               path: /health
               port: 80
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /health
               port: 80
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
             periodSeconds: 10
           envFrom:
             - secretRef:
