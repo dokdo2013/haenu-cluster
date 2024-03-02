@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: vmusic-fe-configmap
-  namespace: haenu
-data:
-  NEXT_PUBLIC_API_ENDPOINT: "https://api.vmusic.kr"

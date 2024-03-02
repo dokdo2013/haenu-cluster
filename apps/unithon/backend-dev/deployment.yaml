@@ -6,7 +6,7 @@ metadata:
   labels:
     app: unithon-backend-dev
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: unithon-backend-dev
@@ -19,7 +19,7 @@ spec:
         - name: unithon-backend-dev-init
           image: hyeonwoo5342/unithon-backend-dev:51
           imagePullPolicy: Always
-          command: ['sh', '-c', '/app/.venv/bin/python manage.py migrate']
+          command: ["sh", "-c", "/app/.venv/bin/python manage.py migrate"]
           envFrom:
             - secretRef:
                 name: unithon-backend-dev-secret
@@ -29,6 +29,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "150m"
+            limits:
+              memory: "200Mi"
+              cpu: "150m"
           livenessProbe:
             httpGet:
               path: /
@@ -42,5 +49,5 @@ spec:
             initialDelaySeconds: 35
             periodSeconds: 10
           envFrom:
-          - secretRef:
-              name: unithon-backend-dev-secret
+            - secretRef:
+                name: unithon-backend-dev-secret
