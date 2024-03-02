@@ -6,7 +6,7 @@ metadata:
   labels:
     app: cuk-haenu-com
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: cuk-haenu-com
@@ -16,10 +16,10 @@ spec:
         app: cuk-haenu-com
     spec:
       containers:
-      - name: cuk-haenu-com
-        image: hyeonwoo5342/cuk-haenu-com:3
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+        - name: cuk-haenu-com
+          image: hyeonwoo5342/cuk-haenu-com:3
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret

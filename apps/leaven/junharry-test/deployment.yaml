@@ -15,29 +15,29 @@ spec:
         app: junharry-test
     spec:
       containers:
-      - name: junharry-test
-        image: hyeonwoo5342/junharry-test:140
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
-        resources:
-          limits:
-            memory: '160Mi'
-            cpu: '50m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: junharry-test
+          image: hyeonwoo5342/junharry-test:140
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "160Mi"
+              cpu: "50m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -49,12 +49,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: junharry-test
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

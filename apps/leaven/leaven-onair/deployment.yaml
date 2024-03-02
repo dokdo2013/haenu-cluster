@@ -15,32 +15,32 @@ spec:
         app: leaven-onair
     spec:
       containers:
-      - name: leaven-onair
-        image: hyeonwoo5342/leaven-onair:45
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: '20Mi'
-            cpu: '10m'
-          requests:
-            memory: '20Mi'
-            cpu: '10m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: leaven-onair
+          image: hyeonwoo5342/leaven-onair:45
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "20Mi"
+              cpu: "10m"
+            requests:
+              memory: "20Mi"
+              cpu: "10m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -52,12 +52,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: leaven-onair
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

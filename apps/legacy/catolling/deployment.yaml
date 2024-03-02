@@ -6,7 +6,7 @@ metadata:
   labels:
     app: catolling
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: catolling
@@ -16,10 +16,10 @@ spec:
         app: catolling
     spec:
       containers:
-      - name: catolling
-        image: hyeonwoo5342/catolling:5
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+        - name: catolling
+          image: hyeonwoo5342/catolling:5
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret

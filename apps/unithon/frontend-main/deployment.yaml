@@ -22,11 +22,11 @@ spec:
             - containerPort: 3000
           resources:
             requests:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
             limits:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
           livenessProbe:
             httpGet:
               path: /
@@ -50,7 +50,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: unithon-frontend-main
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource

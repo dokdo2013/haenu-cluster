@@ -18,17 +18,17 @@ spec:
         - name: unithon-backend-main-init
           image: hyeonwoo5342/unithon-backend-main:9
           imagePullPolicy: Always
-          command: [ 'sh', '-c', '/app/.venv/bin/python manage.py migrate' ]
+          command: ["sh", "-c", "/app/.venv/bin/python manage.py migrate"]
           envFrom:
             - secretRef:
                 name: unithon-backend-main-secret
           resources:
             requests:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
             limits:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
       containers:
         - name: unithon-backend-main
           image: hyeonwoo5342/unithon-backend-main:9
@@ -37,11 +37,11 @@ spec:
             - containerPort: 8000
           resources:
             requests:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
             limits:
-              memory: '200Mi'
-              cpu: '150m'
+              memory: "200Mi"
+              cpu: "150m"
           livenessProbe:
             httpGet:
               path: /
@@ -68,7 +68,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: unithon-backend-main
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource

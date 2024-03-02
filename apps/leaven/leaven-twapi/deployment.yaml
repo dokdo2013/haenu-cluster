@@ -6,7 +6,7 @@ metadata:
   labels:
     app: leaven-twapi
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
       app: leaven-twapi
@@ -16,32 +16,32 @@ spec:
         app: leaven-twapi
     spec:
       containers:
-      - name: leaven-twapi
-        image: hyeonwoo5342/leaven-twapi:13
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 4200
-        resources:
-          limits:
-            memory: '100Mi'
-            cpu: '30m'
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 4200
-          initialDelaySeconds: 20
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 4200
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        envFrom:
-        - secretRef:
-            name: leaven-twapi-secret
+        - name: leaven-twapi
+          image: hyeonwoo5342/leaven-twapi:13
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "30m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4200
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4200
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: leaven-twapi-secret
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 # apiVersion: autoscaling/v2
 # kind: HorizontalPodAutoscaler

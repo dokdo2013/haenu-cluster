@@ -15,32 +15,32 @@ spec:
         app: beadyo97-gellgell
     spec:
       containers:
-      - name: beadyo97-gellgell
-        image: hyeonwoo5342/beadyo97-gellgell:15
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: '20Mi'
-            cpu: '10m'
-          requests:
-            memory: '20Mi'
-            cpu: '10m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: beadyo97-gellgell
+          image: hyeonwoo5342/beadyo97-gellgell:15
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "20Mi"
+              cpu: "10m"
+            requests:
+              memory: "20Mi"
+              cpu: "10m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -52,12 +52,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: beadyo97-gellgell
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

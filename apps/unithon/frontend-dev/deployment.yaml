@@ -6,7 +6,7 @@ metadata:
   labels:
     app: unithon-frontend-dev
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: unithon-frontend-dev
@@ -23,11 +23,11 @@ spec:
             - containerPort: 3000
           resources:
             requests:
-              memory: '150Mi'
-              cpu: '100m'
+              memory: "150Mi"
+              cpu: "100m"
             limits:
-              memory: '150Mi'
-              cpu: '100m'
+              memory: "150Mi"
+              cpu: "100m"
           livenessProbe:
             httpGet:
               path: /
