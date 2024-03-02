@@ -47,13 +47,13 @@ spec:
             httpGet:
               path: /
               port: 8000
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /
               port: 8000
-            initialDelaySeconds: 50
+            initialDelaySeconds: 90
             periodSeconds: 10
           envFrom:
             - secretRef:
