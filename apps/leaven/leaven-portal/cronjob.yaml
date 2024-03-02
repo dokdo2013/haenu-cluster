@@ -55,6 +55,7 @@ spec:
   # every 10 minutes
   schedule: "*/10 * * * *"
   timeZone: "Asia/Seoul"
+  suspend: true
   successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
