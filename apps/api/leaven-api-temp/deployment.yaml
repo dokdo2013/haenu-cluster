@@ -6,6 +6,7 @@ metadata:
   labels:
     app: leaven-api-temp
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: leaven-api-temp
