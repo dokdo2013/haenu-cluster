@@ -24,19 +24,19 @@ spec:
           resources:
             requests:
               memory: "100Mi"
-              cpu: "30m"
+              cpu: "50m"
             limits:
               memory: "100Mi"
-              cpu: "30m"
+              cpu: "50m"
           livenessProbe:
             httpGet:
               path: /
               port: 3000
-            initialDelaySeconds: 90
+            initialDelaySeconds: 150
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /
               port: 3000
-            initialDelaySeconds: 90
+            initialDelaySeconds: 150
             periodSeconds: 10

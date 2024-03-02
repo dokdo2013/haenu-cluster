@@ -39,21 +39,21 @@ spec:
           resources:
             requests:
               memory: "150Mi"
-              cpu: "50m"
+              cpu: "60m"
             limits:
               memory: "150Mi"
-              cpu: "50m"
+              cpu: "60m"
           livenessProbe:
             httpGet:
               path: /
               port: 8000
-            initialDelaySeconds: 90
+            initialDelaySeconds: 150
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /
               port: 8000
-            initialDelaySeconds: 90
+            initialDelaySeconds: 150
             periodSeconds: 10
           envFrom:
             - secretRef:
