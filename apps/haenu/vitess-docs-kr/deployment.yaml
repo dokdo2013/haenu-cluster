@@ -15,29 +15,29 @@ spec:
         app: vitess-docs-kr
     spec:
       containers:
-      - name: vitess-docs-kr
-        image: hyeonwoo5342/vitess-docs-kr:8
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
-        resources:
-          limits:
-            memory: '160Mi'
-            cpu: '60m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 40
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 25
-          periodSeconds: 10
+        - name: vitess-docs-kr
+          image: hyeonwoo5342/vitess-docs-kr:8
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "160Mi"
+              cpu: "60m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 25
+            periodSeconds: 10
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -49,12 +49,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: vitess-docs-kr
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

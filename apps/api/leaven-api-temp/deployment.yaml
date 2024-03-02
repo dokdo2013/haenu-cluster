@@ -15,41 +15,41 @@ spec:
         app: leaven-api-temp
     spec:
       containers:
-      - name: leaven-api-temp
-        image: hyeonwoo5342/leaven-api-temp:4
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: '160Mi'
-            cpu: '50m'
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        envFrom: 
-        - secretRef:
-            name: leaven-api-temp-secret
-#      affinity:
-#        nodeAffinity:
-#          requiredDuringSchedulingIgnoredDuringExecution:
-#            nodeSelectorTerms:
-#            - matchExpressions:
-#              - key: vke.vultr.com/node-pool
-#                operator: In
-#                values:
-#                - main-node-pool
+        - name: leaven-api-temp
+          image: hyeonwoo5342/leaven-api-temp:4
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "160Mi"
+              cpu: "50m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: leaven-api-temp-secret
+      #      affinity:
+      #        nodeAffinity:
+      #          requiredDuringSchedulingIgnoredDuringExecution:
+      #            nodeSelectorTerms:
+      #            - matchExpressions:
+      #              - key: vke.vultr.com/node-pool
+      #                operator: In
+      #                values:
+      #                - main-node-pool
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -61,12 +61,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: leaven-api-temp
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

@@ -15,32 +15,32 @@ spec:
         app: vmusic-be
     spec:
       containers:
-      - name: vmusic-be
-        image: hyeonwoo5342/vmusic-be:11
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8000
-        resources:
-          limits:
-            memory: '200Mi'
-            cpu: '100m'
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 40
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 25
-          periodSeconds: 10
-        envFrom:
-        - secretRef:
-            name: vmusic-secret
+        - name: vmusic-be
+          image: hyeonwoo5342/vmusic-be:11
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: "100m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 25
+            periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: vmusic-secret
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -52,12 +52,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: vmusic-be
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

@@ -15,32 +15,32 @@ spec:
         app: music-c6h12o6-kr
     spec:
       containers:
-      - name: music-c6h12o6-kr
-        image: hyeonwoo5342/music.c6h12o6.kr:25
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: '20Mi'
-            cpu: '10m'
-          requests:
-            memory: '20Mi'
-            cpu: '10m'
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: music-c6h12o6-kr
+          image: hyeonwoo5342/music.c6h12o6.kr:25
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "20Mi"
+              cpu: "10m"
+            requests:
+              memory: "20Mi"
+              cpu: "10m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
       imagePullSecrets:
-      - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -52,12 +52,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: music-c6h12o6-kr
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 60
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
