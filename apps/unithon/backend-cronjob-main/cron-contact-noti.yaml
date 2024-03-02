@@ -7,6 +7,7 @@ spec:
   # 매일 오전 8시에 실행
   schedule: "0 8 * * *"
   timeZone: Asia/Seoul
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
@@ -16,10 +17,10 @@ spec:
               image: hyeonwoo5342/unithon-contact-noti-main:8
               imagePullPolicy: Always
               ports:
-              - containerPort: 3000
+                - containerPort: 3000
               envFrom:
-              - configMapRef:
-                  name: cron-noti-main-configmap
-              - secretRef:
-                  name: cron-noti-main-secret
+                - configMapRef:
+                    name: cron-noti-main-configmap
+                - secretRef:
+                    name: cron-noti-main-secret
           restartPolicy: OnFailure

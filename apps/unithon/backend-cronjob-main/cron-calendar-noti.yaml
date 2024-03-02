@@ -7,6 +7,7 @@ spec:
   # 매 분마다 실행
   schedule: "*/1 * * * *"
   timeZone: Asia/Seoul
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:

@@ -1,33 +1,33 @@
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: cron-contact-noti-dev
-  namespace: unithon
-spec:
-  # 매일 오전 8시에 실행
-  schedule: "0 8 * * *"
-  timeZone: Asia/Seoul
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: cron-contact-noti-dev
-              image: hyeonwoo5342/unithon-contact-noti-dev:1
-              imagePullPolicy: Always
-              ports:
-              - containerPort: 3000
-              envFrom:
-              - configMapRef:
-                  name: cron-noti-dev-configmap
-              - secretRef:
-                  name: cron-noti-dev-secret
-              volumeMounts:
-                - mountPath: /etc/localtime
-                  name: timezone-config
-          volumes:
-            - name: timezone-config
-              hostPath:
-                path: /usr/share/zoneinfo/Asia/Seoul
-          restartPolicy: OnFailure
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: cron-contact-noti-dev
+#   namespace: unithon
+# spec:
+#   # 매일 오전 8시에 실행
+#   schedule: "0 8 * * *"
+#   timeZone: Asia/Seoul
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#             - name: cron-contact-noti-dev
+#               image: hyeonwoo5342/unithon-contact-noti-dev:1
+#               imagePullPolicy: Always
+#               ports:
+#               - containerPort: 3000
+#               envFrom:
+#               - configMapRef:
+#                   name: cron-noti-dev-configmap
+#               - secretRef:
+#                   name: cron-noti-dev-secret
+#               volumeMounts:
+#                 - mountPath: /etc/localtime
+#                   name: timezone-config
+#           volumes:
+#             - name: timezone-config
+#               hostPath:
+#                 path: /usr/share/zoneinfo/Asia/Seoul
+#           restartPolicy: OnFailure
 
