@@ -4,6 +4,9 @@ metadata:
   name: bash-plus-server-ingress
   namespace: api
   annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: nginx
 spec:
@@ -18,3 +21,7 @@ spec:
                 name: bash-plus-server
                 port:
                   number: 8080
+  tls:
+    - secretName: letsencrypt-prod
+      hosts:
+      - api.bash.plus
