@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: chatgpt
-          image: hyeonwoo5342/chatgpt:7
+          image: hyeonwoo5342/chatgpt:1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
