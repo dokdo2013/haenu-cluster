@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bash-plus-server-dev
+  namespace: api
+  labels:
+    app: bash-plus-server-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bash-plus-server-dev
+  template:
+    metadata:
+      labels:
+        app: bash-plus-server-dev
+    spec:
+      containers:
+        - name: bash-plus-server-dev
+          image: hyeonwoo5342/bash-plus-server-dev:4
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "15"]
+          envFrom:
+            - secretRef:
+                name: bash-plus-server-dev-secret
+      imagePullSecrets:
+        - name: dockerhub-secret
